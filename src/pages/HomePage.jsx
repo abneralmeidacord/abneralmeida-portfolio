@@ -1,7 +1,7 @@
-import About from '../components/About.jsx'
-import Skills from '../components/Skills.jsx'
-import Projects from '../components/Projects.jsx'
-import Contact from '../components/Contact.jsx'
+import About from '../components/About/About.jsx'
+import Skills from '../components/Skills/Skills.jsx'
+import Projects from '../components/Projects/Projects.jsx'
+import Contact from '../components/Contact/Contact.jsx'
 
 export default function HomePage({ text, language }) {
   return <>

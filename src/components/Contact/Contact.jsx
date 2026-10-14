@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
-import SocialLinks from '../SocialLinks.jsx'
-import contactPhoto from '../assets/images/abner-contact.png'
+import SocialLinks from '../SocialLinks/SocialLinks.jsx'
+import contactPhoto from '../../assets/images/abner-contact.png'
 import './Contact.css'
 export default function Contact({ text }) {
   const [status, setStatus] = useState('idle')

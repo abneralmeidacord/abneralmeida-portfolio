@@ -19,7 +19,7 @@ A interface local está implementada. O envio de e-mail depende da configuraçã
 ## Funcionalidades
 
 - Página inicial com a visão geral, mais páginas próprias de Sobre Mim, Habilidades e Experiências.
-- Página Sobre Mim com a apresentação e uma área preparada para cartas de recomendação em PDF.
+- Página Sobre Mim com currículo no idioma selecionado (PT/EN) e a carta de recomendação de Gabriel Rangel em PDF, com visualizador dentro do site e download.
 - Página Habilidades com o globo, linguagens, ferramentas, idiomas e diferenciais.
 - Página Experiências com o card profissional e a timeline dos projetos.
 - Menu de projetos direcionado à timeline na página Experiências; contato na página inicial.
@@ -71,6 +71,7 @@ As versões resolvidas estão em `package-lock.json`. Use `npm ci` para reproduz
 | JavaScript / JSX | Lógica e componentes |
 | CSS | Layout, responsividade, fontes e variáveis de cores |
 | react-icons | Ícones do header, do globo e dos links dos projetos |
+| react-pdf / PDF.js | Visualização interna dos PDFs com paginação, zoom e texto selecionável |
 | three | Geometria e projeção do globo 3D |
 | @react-three/fiber | Integração do Three.js com React |
 | @react-three/drei | Câmera interativa e movimento do globo |
@@ -131,6 +132,7 @@ O Vite cuida do servidor e da compilação. A programação dos componentes cont
 - **Ícones originais do Figma:** `src/assets/icons/`, importados em `src/data/designAssets.js`.
 - **Textos PT/EN:** `src/data/translations.js`.
 - **Cartas de recomendação:** `src/data/recommendations.js` e PDFs em `public/recommendations/`. Veja [como adicionar as cartas](docs/recommendations.md).
+- **Currículos PT/EN:** `src/data/resumes.js` e PDFs em `public/resumes/`. Veja [como adicionar os currículos](docs/recommendations.md).
 - **Aparência de uma seção:** o arquivo CSS do componente correspondente.
 
 Cada componente tem um arquivo `.jsx` com sua lógica e marcação e um arquivo `.css` com seus estilos. Não há necessidade de criar um terceiro arquivo JavaScript para componentes pequenos.

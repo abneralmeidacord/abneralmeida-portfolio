@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import Header from './components/Header.jsx'
+import Header from './components/Header/Header.jsx'
 import HomePage from './pages/HomePage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import SkillsPage from './pages/SkillsPage.jsx'
 import ExperiencesPage from './pages/ExperiencesPage.jsx'
 import usePageNavigation from './hooks/usePageNavigation.js'
-import Footer from './components/Footer.jsx'
+import Footer from './components/Footer/Footer.jsx'
 import { translations } from './data/translations.js'
 import './App.css'
 

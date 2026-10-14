@@ -1,4 +1,3 @@
-// Os contatos ficam em um único lugar.
 export const profile = {
   name: 'Abner Almeida',
   email: 'abnersolk@gmail.com',

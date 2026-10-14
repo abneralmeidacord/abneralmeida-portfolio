@@ -4,10 +4,6 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, OrbitControls } from "@react-three/drei";
 import "./SkillsGlobe.css";
 
-// Adaptado de João Paulo Aramuni (MIT). Licença em docs/references/aramuni-LICENSE.txt.
-// A esfera distribui os ícones em 3D; o CSS cuida da aparência.
-
-// Espiral de Fibonacci: N pontos bem distribuídos numa esfera
 function fibonacciSphere(n, radius) {
   const golden = Math.PI * (3 - Math.sqrt(5));
   return Array.from({ length: n }, (_, i) => {
@@ -18,11 +14,9 @@ function fibonacciSphere(n, radius) {
   });
 }
 
-const ICON_PX = 40; // tamanho do ícone no CSS (ver SkillsGlobe.css)
+const ICON_PX = 40;
 const RADIUS = 3.3;
-const DRAG_THRESHOLD = 6; // px: acima disso o clique vira arrasto e não abre o link
-// Quanto tempo fora da tela antes de desmontar o <Canvas> (rolar rápido para
-// cima e para baixo não fica recriando o WebGL)
+const DRAG_THRESHOLD = 6;
 const UNMOUNT_DELAY_MS = 1500;
 
 const _world = new THREE.Vector3();
@@ -35,8 +29,6 @@ function Globe({ count, radius, accent, background, items, motion, light }) {
   const group = useRef(null);
   const points = useMemo(() => fibonacciSphere(count, radius), [count, radius]);
   const shell = radius * 0.85;
-  // Tamanho do ícone na cena 3D: diminui conforme a quantidade de skills
-  // (≈0.45 com ~30 skills; aumente o 0.8 para ícones maiores)
   const iconWorld = THREE.MathUtils.clamp((radius * 0.8) / Math.sqrt(count), 0.32, 0.6);
 
   useFrame((state, delta) => {
@@ -45,19 +37,17 @@ function Globe({ count, radius, accent, background, items, motion, light }) {
     const { camera } = state;
     const { width, height } = state.size;
 
-    if (motion) g.rotation.y += delta * 0.06; // giro lento, independente do FPS
+    if (motion) g.rotation.y += delta * 0.06;
     g.updateWorldMatrix(true, false);
     camera.updateMatrixWorld();
     _camDir.copy(camera.position).normalize();
     const tanHalfFov = Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2);
 
-    // Projeta cada ponto 3D na tela e move o ícone direto no DOM (sem re-render)
     points.forEach((p, i) => {
       const el = items.current[i];
       if (!el) return;
       _world.copy(p).applyMatrix4(g.matrixWorld);
 
-      // 1 = de frente para a câmera, 0 = atrás do globo
       const t = THREE.MathUtils.clamp((_dir.copy(_world).normalize().dot(_camDir) - 0.1) * 2, 0, 1);
 
       _ndc.copy(_world).project(camera);
@@ -71,14 +61,12 @@ function Globe({ count, radius, accent, background, items, motion, light }) {
       el.style.opacity = String(t);
       el.style.zIndex = String(Math.round(t * 100));
       el.style.pointerEvents = t > 0.8 ? "auto" : "none";
-      // Ícones atrás do globo saem da ordem do Tab
       el.style.visibility = t < 0.02 ? "hidden" : "visible";
     });
   });
 
   return (
     <group ref={group}>
-      {/* grade: frente mais visível, fundo bem fraco */}
       <mesh>
         <icosahedronGeometry args={[shell, 2]} />
         <meshBasicMaterial color={accent} wireframe transparent opacity={light ? 0.35 : 0.1} />
@@ -87,7 +75,6 @@ function Globe({ count, radius, accent, background, items, motion, light }) {
         <icosahedronGeometry args={[shell, 2]} />
         <meshBasicMaterial color={accent} wireframe transparent opacity={light ? 0.1 : 0.03} side={THREE.BackSide} />
       </mesh>
-      {/* núcleo: escurece no tema escuro, clareia no claro */}
       <mesh>
         <sphereGeometry args={[shell * 0.98, 32, 32]} />
         <meshBasicMaterial
@@ -97,7 +84,6 @@ function Globe({ count, radius, accent, background, items, motion, light }) {
           side={THREE.DoubleSide}
         />
       </mesh>
-      {/* halo (blending aditivo) */}
       <mesh>
         <sphereGeometry args={[shell * 1.035, 32, 32]} />
         <meshBasicMaterial
@@ -112,8 +98,6 @@ function Globe({ count, radius, accent, background, items, motion, light }) {
   );
 }
 
-// Afasta a câmera o suficiente para o globo caber (inclusive no celular).
-// Na remontagem, volta para a posição guardada antes de ajustar a distância.
 function FitCamera({ radius }) {
   const camera = useThree((s) => s.camera);
   const aspect = useThree((s) => s.size.width / s.size.height);
@@ -127,7 +111,6 @@ function FitCamera({ radius }) {
   return null;
 }
 
-// Lê um token do tema (ex.: --accent) já resolvido no elemento
 const readToken = (el, name, fallback) =>
   getComputedStyle(el).getPropertyValue(name).trim() || fallback;
 
@@ -149,14 +132,11 @@ export default function SkillsGlobe({ skills, hint, pauseLabel, resumeLabel, una
     accent: readToken(document.documentElement, "--color-primary", ""),
     bg: readToken(document.documentElement, "--color-surface", ""),
   }));
-  const [visible, setVisible] = useState(true); // renderiza os frames
-  const [mounted, setMounted] = useState(true); // <Canvas> montado (WebGL vivo)
+  const [visible, setVisible] = useState(true);
+  const [mounted, setMounted] = useState(true);
   const [motion, setMotion] = useState(() => !prefersReducedMotion());
   const light = true;
 
-  // Saiu da tela (rolou o terminal): para de renderizar na hora e desmonta o
-  // <Canvas> pouco depois, liberando o contexto WebGL. A margem remonta um
-  // pouco antes de o globo voltar a aparecer.
   useEffect(() => {
     const el = container.current;
     if (!el || !("IntersectionObserver" in window)) return;
@@ -177,7 +157,6 @@ export default function SkillsGlobe({ skills, hint, pauseLabel, resumeLabel, una
     };
   }, []);
 
-  // Arrastar em cima de um ícone gira o globo; só abre o link num clique "parado"
   const onPointerDown = (e) => {
     dragStart.current = { x: e.clientX, y: e.clientY };
   };
@@ -197,7 +176,6 @@ export default function SkillsGlobe({ skills, hint, pauseLabel, resumeLabel, una
         onPointerDown={onPointerDown}
         onClickCapture={onClickCapture}
       >
-        {/* eventSource = container: o arrasto funciona também em cima dos ícones */}
         {mounted && (
           <GlobeBoundary label={unavailableLabel}><Canvas
             eventSource={container}
@@ -206,7 +184,6 @@ export default function SkillsGlobe({ skills, hint, pauseLabel, resumeLabel, una
             dpr={[1, 1.5]}
             gl={{ alpha: true, antialias: true }}
           >
-            {/* a névoa apaga o fundo do globo no escuro; no claro ela só acinzentaria */}
             {!light && <fog attach="fog" args={[colors.bg, 10, 25]} />}
             <FitCamera radius={RADIUS * 1.2} />
             <Float
@@ -222,7 +199,7 @@ export default function SkillsGlobe({ skills, hint, pauseLabel, resumeLabel, una
                 items={items}
                 motion={motion}
                 light={light}
-               
+
               />
             </Float>
             <OrbitControls
@@ -262,7 +239,6 @@ export default function SkillsGlobe({ skills, hint, pauseLabel, resumeLabel, una
         </ul>
       </div>
 
-      {/* fora do palco: os nomes das skills não passam por cima da dica */}
       <p className="skills-globe__hint">{hint}</p>
       <button className="skills-globe__pause" onClick={() => setMotion(!motion)} aria-pressed={!motion}>{motion ? pauseLabel : resumeLabel}</button>
     </div>

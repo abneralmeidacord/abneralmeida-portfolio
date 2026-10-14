@@ -1,4 +1,4 @@
-import hero from '../assets/images/abner-hero.png'
+import hero from '../../assets/images/abner-hero.png'
 import { mainIcons } from '../../data/designAssets.js'
 import './About.css'
 export default function About({ text, showTools = true }) {

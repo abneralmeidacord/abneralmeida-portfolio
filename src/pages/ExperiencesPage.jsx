@@ -1,5 +1,5 @@
-import Experiences from '../components/Experiences.jsx'
-import Projects from '../components/Projects.jsx'
+import Experiences from '../components//Experiences/Experiences.jsx'
+import Projects from '../components/Projects/Projects.jsx'
 import './ExperiencesPage.css'
 
 export default function ExperiencesPage({ text, language }) {

@@ -1,4 +1,4 @@
-import ProjectCard from './ProjectCard.jsx'
+import ProjectCard from '../ProjectCard/ProjectCard.jsx'
 import { projects } from '../../data/projects.js'
 import './Projects.css'
 export default function Projects({ text, language }) {

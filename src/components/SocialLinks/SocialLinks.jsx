@@ -1,5 +1,5 @@
-import { profile } from '../data/profile.js'
-import { designIcons } from '../data/designAssets.js'
+import { profile } from '../../data/profile.js'
+import { designIcons } from '../../data/designAssets.js'
 import './SocialLinks.css'
 export default function SocialLinks() {
   const links = [

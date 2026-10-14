@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { skills } from '../../data/skills.js'
 import { designIcons, secondaryIcons } from '../../data/designAssets.js'
-import Experiences from './Experiences.jsx'
+import Experiences from '../Experiences/Experiences.jsx'
 import './Skills.css'
 const SkillsGlobe = lazy(() => import('../SkillsGlobe/SkillsGlobe.jsx'))
 export default function Skills({ text, language, dedicated = false }) {
@@ -29,7 +29,7 @@ export default function Skills({ text, language, dedicated = false }) {
       {!dedicated && <Experiences text={text} language={language} />}
     </div>
     <div className="skills-secondary">
-      <div className="secondary-icons">{secondaryIcons.map(({name, image}) => <img key={name} src={image} alt={name} loading="lazy" />)}</div>
+      <div className="secondary-icons">{secondaryIcons.map(({ name, image }) => <img key={name} src={image} alt={name} loading="lazy" />)}</div>
       <p><strong>{text.secondary}</strong><br />{text.secondaryMore}</p>
     </div>
     <div className="skills-strengths"><h3>{text.strengths}</h3><ul>{text.strengthItems.map(item => <li key={item}>{item}</li>)}</ul></div>

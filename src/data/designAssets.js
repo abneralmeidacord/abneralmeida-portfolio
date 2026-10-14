@@ -1,4 +1,3 @@
-// Imagens originais exportadas das camadas do Figma.
 import css from '../assets/icons/CSS.png'
 import javascript from '../assets/icons/JS.png'
 import react from '../assets/icons/React.png'
