@@ -1,0 +1,37 @@
+.social-links {
+    --social-icon-size: clamp(48px, 7.64vw, 110px);
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 1.05vw, 15px);
+    margin-top: 12px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--social-icon-size);
+    height: var(--social-icon-size);
+    transition: transform .2s;
+}
+
+.social-links .social-email {
+    width: calc(var(--social-icon-size) * 1.263636);
+}
+
+.social-links img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.social-links a:hover {
+    transform: translateY(-4px);
+}
+
+@media (max-width: 540px) {
+    .social-links {
+        --social-icon-size: 48px;
+        gap: 16px;
+    }
+}

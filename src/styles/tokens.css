@@ -1,0 +1,36 @@
+/* Cores e fontes compartilhadas. Altere aqui para atualizar o site inteiro. */
+:root {
+  --color-background: #fffcf5;
+  --color-primary: #0d5850;
+  --color-primary-hover: #03463d;
+  --color-text: #151b1a;
+  --color-muted: #626d69;
+  --color-card: #525e5d;
+  --color-on-card: #fffcf5;
+  --color-border: #b0b0b0;
+  --color-button: #05534a;
+  --color-button-end: #fffcf5;
+  --color-surface: #f2f2e8;
+  --color-white: #ffffff;
+  --color-error: #a53037;
+  --color-shadow: #173e3020;
+  --color-transparent: transparent;
+  --color-html: #e34f26;
+  --color-css: #1572b6;
+  --color-javascript: #b49c09;
+  --color-react: #087ea4;
+  --color-typescript: #3178c6;
+  --color-figma: #a259ff;
+  --color-python: #3776ab;
+  --color-bootstrap: #7952b3;
+  --color-java: #bd6112;
+  --color-git: #f05032;
+  --color-linkedin: #0a66c2;
+  --color-whatsapp: #148447;
+  --color-instagram: #c13584;
+  --font-body: 'Montserrat', Arial, sans-serif;
+  --font-accent: 'Ibarra Real Nova', Georgia, serif;
+  --radius-card: 14px;
+  --shadow-card: 0 5px 18px var(--color-shadow);
+  --content-width: 1120px;
+}

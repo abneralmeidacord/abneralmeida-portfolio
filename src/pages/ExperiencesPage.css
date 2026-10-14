@@ -1,0 +1,2 @@
+.experience-page-summary { width: min(360px, 100%); margin-inline: auto; }
+.experience-page .experience-list { flex-direction: column; }

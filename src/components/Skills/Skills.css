@@ -1,0 +1,255 @@
+.skills-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 28.125%;
+    gap: 1.5625%;
+    align-items: stretch;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px 20px;
+}
+
+.skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    min-height: 255px;
+    padding: 30px 16px;
+    background: var(--color-card);
+    color: var(--color-on-card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+}
+
+.skill-card>img {
+    height: clamp(76px, 8.33vw, 120px);
+    width: auto;
+    max-width: 120px;
+    object-fit: contain;
+}
+
+.skill-card span {
+    font-size: 15px;
+    line-height: 1.25;
+    text-align: center;
+    max-width: 220px;
+}
+
+.skill-trio {
+    width: 120px;
+    height: 120px;
+    background: var(--color-on-card);
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.skill-trio img {
+    position: absolute;
+    width: auto;
+    height: 36px;
+    object-fit: contain;
+}
+
+.trio-js {
+    left: 40px;
+    top: 18px;
+}
+
+.trio-html {
+    left: 25px;
+    bottom: 20px;
+    transform: rotate(-12deg);
+}
+
+.trio-css {
+    right: 25px;
+    bottom: 20px;
+    transform: rotate(12deg);
+}
+
+.skills-secondary {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 42px;
+}
+
+.secondary-icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.secondary-icons img {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+}
+
+.skills-secondary p {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.2;
+}
+
+.skills-strengths {
+    margin-top: 45px;
+}
+
+.skills-strengths h3 {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.skills-strengths ul {
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 24px;
+    margin-top: 18px;
+}
+
+.skills-strengths li {
+    text-align: center;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 12px;
+    font-family: var(--font-accent);
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.2;
+}
+
+.skills-globe-card {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    padding: 16px 10px;
+    align-self: center;
+}
+
+.skills-layout--dedicated {
+    grid-template-columns: .9fr 1.1fr;
+    gap: 32px;
+}
+
+.skills-layout--dedicated .skill-card {
+    min-height: 220px;
+    gap: 26px;
+}
+
+.globe-loading {
+    min-height: 410px;
+    display: grid;
+    place-items: center;
+    color: var(--color-primary);
+}
+
+@media (max-width: 1100px) {
+    .skills-grid {
+        gap: 20px;
+    }
+
+    .skill-card {
+        min-height: 220px;
+        gap: 26px;
+        padding-inline: 10px;
+    }
+
+    .skill-card span {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .skills-layout--dedicated {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-layout--dedicated .skills-globe-card {
+        width: min(580px, 100%);
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 850px) {
+    .skills-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-secondary {
+        flex-wrap: wrap;
+        gap: 22px;
+    }
+}
+
+@media (max-width: 540px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .skill-card,
+    .skills-layout--dedicated .skill-card {
+        min-height: 205px;
+        gap: 24px;
+    }
+
+    .skill-card>img {
+        height: 88px;
+    }
+
+    .skill-trio {
+        width: 105px;
+        height: 105px;
+    }
+
+    .trio-js {
+        left: 33px;
+        top: 12px;
+    }
+
+    .trio-html {
+        left: 18px;
+        bottom: 16px;
+    }
+
+    .trio-css {
+        right: 18px;
+        bottom: 16px;
+    }
+
+    .secondary-icons {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .secondary-icons img {
+        height: 50px;
+    }
+
+    .skills-secondary p {
+        font-size: 23px;
+    }
+
+    .skills-strengths ul {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .skills-strengths li {
+        font-size: 20px;
+    }
+}

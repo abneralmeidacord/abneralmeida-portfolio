@@ -1,0 +1,144 @@
+.about {
+    padding-top: 34px;
+    margin-bottom: 120px;
+}
+
+.about-main {
+    display: grid;
+    grid-template-columns: 1.0667fr 1fr;
+    align-items: end;
+    gap: 3.125%;
+}
+
+.about-copy {
+    padding-block: 30px;
+}
+
+.about-greeting {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: clamp(30px, 3.4vw, 48px);
+    line-height: 1.2;
+}
+
+.about-copy h1 {
+    color: var(--color-primary);
+    font-weight: 800;
+    font-size: clamp(40px, 5.55vw, 80px);
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin: 8px 0;
+}
+
+.about-role {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(24px, 2.2vw, 32px);
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.about-copy>p:not(.about-greeting):not(.about-role) {
+    margin-top: 22px;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.about-photo {
+    width: 100%;
+    height: auto;
+    align-self: start;
+}
+
+.about-tools {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-block: 34px;
+}
+
+.about-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.about-icons img {
+    height: 46px;
+    width: auto;
+    object-fit: contain;
+}
+
+.about-tools p {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: clamp(18px, 1.7vw, 24px);
+    line-height: 1.25;
+}
+
+.about-button {
+    margin-left: auto;
+    min-width: 180px;
+    background: linear-gradient(110deg, var(--color-button), var(--color-button-end));
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+@media (max-width: 1000px) {
+    .about-icons img {
+        height: 36px;
+    }
+
+    .about-tools {
+        gap: 15px;
+    }
+
+    .about-button {
+        min-width: 140px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 760px) {
+    .about {
+        margin-bottom: 35px;
+    }
+
+    .about-main {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .about-copy {
+        padding-block: 20px 0;
+    }
+
+    .about-photo {
+        width: min(420px, 100%);
+        margin-inline: auto;
+    }
+
+    .about-tools {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .about-icons {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .about-icons img {
+        height: 36px;
+    }
+
+    .about-tools p {
+        font-size: 19px;
+    }
+
+    .about-button {
+        margin-left: 0;
+    }
+}
