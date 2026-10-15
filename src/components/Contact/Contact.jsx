@@ -1,18 +1,27 @@
-import { useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 import SocialLinks from '../SocialLinks/SocialLinks.jsx'
 import contactPhoto from '../../assets/images/abner-contact.png'
 import { profile } from '../../data/profile.js'
 import Reveal from '../Motion/Reveal.jsx'
+import Recaptcha from './Recaptcha.jsx'
 import './Contact.css'
-export default function Contact({ text }) {
+export default function Contact({ text, language }) {
   const [status, setStatus] = useState('idle')
+  const captchaRef = useRef(null)
+  const sendingRef = useRef(false)
+  const captchaKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY?.trim()
+  const onVerified = useCallback(() => setStatus(value => value === 'captchaRequired' ? 'idle' : value), [])
   const configured = Boolean(import.meta.env.VITE_EMAILJS_SERVICE_ID && import.meta.env.VITE_EMAILJS_TEMPLATE_ID && import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
   async function handleSubmit(event) {
     event.preventDefault()
     if (!configured) { setStatus('unconfigured'); return }
+    if (sendingRef.current) return
+    const captchaToken = captchaRef.current?.getResponse()
+    if (!captchaKey || !captchaToken) { setStatus('captchaRequired'); return }
     const form = event.currentTarget
     const fields = new FormData(form)
+    sendingRef.current = true
     setStatus('sending')
     try {
       await emailjs.send(import.meta.env.VITE_EMAILJS_SERVICE_ID, import.meta.env.VITE_EMAILJS_TEMPLATE_ID, {
@@ -23,12 +32,17 @@ export default function Contact({ text }) {
         reply_to: fields.get('from_email').trim(),
         subject: fields.get('subject').trim() || text.contactDefaultSubject,
         message: fields.get('message').trim(),
+        'g-recaptcha-response': captchaToken,
       }, { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY })
       setStatus('sent')
       form.reset()
     } catch { setStatus('error') }
+    finally {
+      sendingRef.current = false
+      captchaRef.current?.reset()
+    }
   }
-  const messages = { sent: text.sent, error: text.error, unconfigured: text.notConfigured }
+  const messages = { sent: text.sent, error: text.error, unconfigured: text.notConfigured, captchaRequired: text.captchaRequired }
   return <section id="contato" className="section container contact">
     <div className="contact-main">
       <Reveal className="contact-intro">
@@ -46,7 +60,8 @@ export default function Contact({ text }) {
               <input id="contact-subject" name="subject" placeholder={text.contactSubject} maxLength={150} />
               <label className="visually-hidden" htmlFor="contact-message">{text.contactMessage}</label>
               <textarea id="contact-message" name="message" placeholder={text.contactMessage} required minLength={10} maxLength={3000} rows={5} />
-              <button className="button" disabled={status === 'sending'}>{status === 'sending' ? text.sending : text.send}</button>
+              {captchaKey ? <Recaptcha key={language} ref={captchaRef} siteKey={captchaKey} language={language} text={text} onVerified={onVerified} /> : <p className="form-note" role="status">{text.captchaUnavailable}</p>}
+              <button className="button" disabled={status === 'sending' || !configured || !captchaKey}>{status === 'sending' ? text.sending : text.send}</button>
               {!configured && status !== 'unconfigured' && <p className="form-note">{text.notConfigured}</p>}
               <p className={'form-status ' + (status === 'error' ? 'form-error' : '')} role="status" aria-live="polite">{messages[status] || ''}</p>
             </form>

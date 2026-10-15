@@ -154,10 +154,24 @@ Os [modelos HTML de contato e resposta automática](docs/emailjs/README.md) segu
 1. Crie um serviço de e-mail e um template na sua conta EmailJS.
 2. Configure o destinatário fixo como `abnersolk@gmail.com`.
 3. No template, use `{{from_name}}`, `{{from_email}}`, `{{subject}}` e `{{message}}`. Configure Reply-To como `{{reply_to}}`. O formulário também envia `to_email` e `to_name`; mantenha **To Email fixo em `abnersolk@gmail.com`** no painel para garantir o destinatário.
-4. Copie `.env.example` para `.env.local`.
+4. Crie ou edite o arquivo `.env.local` na raiz do projeto.
 5. Preencha `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID` e `VITE_EMAILJS_PUBLIC_KEY`.
 6. Reinicie o servidor. Após publicar, configure os mesmos valores no provedor e gere um novo build.
 7. Envie uma mensagem de teste e confirme o recebimento.
+
+### Proteção com reCAPTCHA v2
+
+O formulário exige o reCAPTCHA v2 antes de enviar. Sem a chave pública, ele mantém o envio desativado e oferece contato por e-mail ou WhatsApp.
+
+1. No [painel do Google reCAPTCHA](https://www.google.com/recaptcha/admin/create), registre o site como **reCAPTCHA v2 → Caixa de seleção “Não sou um robô”**. Cadastre o domínio publicado, `localhost` e, se usado no desenvolvimento, `127.0.0.1` (sem protocolo ou porta).
+2. Acrescente `VITE_RECAPTCHA_SITE_KEY=sua_site_key` ao `.env.local` e às variáveis da hospedagem. Reinicie o servidor local ou gere um novo build.
+3. No template **Contact Us** do EmailJS, abra **Settings**, marque **Enable reCAPTCHA V2 verification**, cole a **Secret Key** do Google e salve. A chave secreta fica apenas no EmailJS: nunca a coloque em uma variável `VITE_`.
+4. Se usar a confirmação automática, vincule o template de resposta na aba **Auto-Reply** do Contact Us. A verificação fica no template principal.
+5. Confira que o envio sem resolver o desafio é bloqueado; depois, resolva-o manualmente e confirme o recebimento. Faça o teste também no domínio publicado.
+
+O site envia o token como `g-recaptcha-response`, e o EmailJS precisa estar configurado para validá-lo no servidor. Ativar essa opção no painel é obrigatório para bloquear chamadas diretas à API. O token é descartado após cada tentativa, expiração ou troca de idioma.
+
+[Documentação do EmailJS sobre reCAPTCHA](https://www.emailjs.com/docs/user-guide/adding-captcha-verification/).
 
 Use somente a **chave pública** do EmailJS. Variáveis com prefixo `VITE_` ficam visíveis no navegador; elas não servem para guardar senhas ou chaves privadas.
 

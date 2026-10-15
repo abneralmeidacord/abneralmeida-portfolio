@@ -8,6 +8,6 @@ export default function HomePage({ text, language }) {
     <About text={text} />
     <Skills text={text} language={language} />
     <Projects text={text} language={language} />
-    <Contact text={text} />
+    <Contact text={text} language={language} />
   </>
 }
