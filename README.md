@@ -1,242 +1,418 @@
-# Abner Almeida — Portfólio profissional
+<div align="center">
+  <img src="public/favicon.svg" alt="Identidade do portfólio de Abner Almeida" width="80" />
+  <h1>Abner Almeida | Portfólio profissional</h1>
+  <p>Formação, habilidades e projetos reunidos em uma experiência responsiva, em português e inglês.</p>
+</div>
 
-Portfólio desenvolvido para o LAB01 da disciplina de Desenvolvimento e Integração de Aplicações Web (DIAW), no segundo período de Engenharia de Software da PUC Minas.
+Projeto do **Laboratório 01 (LAB01)** da disciplina **Desenvolvimento e Integração de Aplicações Web (DIAW)**, do 2º período de Engenharia de Software da **PUC Minas**, ministrada pelo **Prof. Dr. João Paulo Carneiro Aramuni**. A documentação adapta o [template oficial da disciplina](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web/blob/main/TEMPLATES/template_README.md) ao sistema implementado.
 
-O site apresenta minha formação, habilidades, experiências, projetos e formas de contato. A interface foi construída com React e Vite, usando JavaScript/JSX e CSS comum.
+## Status do projeto
+
+**Em desenvolvimento, com aplicação executável localmente.** As páginas, a timeline, os documentos PDF e as integrações de contato estão implementados. A publicação em nuvem ainda não foi realizada pelo autor.
+
+| Item | Situação |
+| --- | --- |
+| Interface responsiva e conteúdo PT/EN | Implementados |
+| Projetos, habilidades e experiências | Implementados; ajustes de conteúdo listados nas [pendências](#pendências-da-entrega) |
+| Currículo e carta de recomendação | Disponíveis em visualizador interno de PDF |
+| EmailJS e reCAPTCHA v2 | Integrados; recebimento real de e-mail ainda precisa ser confirmado |
+| Site publicado na nuvem | **Pendente** |
+
+## Índice
+
+- [Links úteis](#links-úteis)
+- [Sobre o projeto](#sobre-o-projeto)
+- [Funcionalidades principais](#funcionalidades-principais)
+- [Tecnologias utilizadas](#tecnologias-utilizadas)
+- [Arquitetura](#arquitetura)
+- [Protótipos e decisões de design](#protótipos-e-decisões-de-design)
+- [Instalação e execução](#instalação-e-execução)
+- [Variáveis de ambiente e envio de e-mail](#variáveis-de-ambiente-e-envio-de-e-mail)
+- [Deploy](#deploy)
+- [Estrutura de pastas](#estrutura-de-pastas)
+- [Demonstração e instruções de uso](#demonstração-e-instruções-de-uso)
+- [Testes](#testes)
+- [Entregas do laboratório](#entregas-do-laboratório)
+- [Documentações utilizadas](#documentações-utilizadas)
+- [Autor](#autor)
+- [Contribuição](#contribuição)
+- [Agradecimentos e créditos](#agradecimentos-e-créditos)
+- [Licença](#licença)
 
 ## Links úteis
 
-- [Protótipo no Figma](https://www.figma.com/design/mfA3J610RzWl3o9r5k5BaF/Portfolio---website?node-id=0-1)
-- [GitHub do autor](https://github.com/abneralmeidacord)
+- **Site publicado:** ainda não publicado. O endereço definitivo deverá ser incluído aqui após o deploy da Sprint 03.
+- [Repositório do portfólio](https://github.com/abneralmeidacord/abneralmeida-portfolio)
+- [Protótipos no Figma](https://www.figma.com/design/mfA3J610RzWl3o9r5k5BaF/Portfolio---website?node-id=0-1)
+- [GitHub de Abner Almeida](https://github.com/abneralmeidacord)
 - [LinkedIn](https://www.linkedin.com/in/abner-almeida-/)
-- **Site publicado:** pendente — a hospedagem será feita posteriormente pelo autor.
-- [Template de README da disciplina](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web/blob/main/TEMPLATES/template_README.md)
+- [Contato por e-mail](mailto:abnersolk@gmail.com)
 
-## Status
+## Sobre o projeto
 
-A interface local está implementada. O envio de e-mail depende da configuração do EmailJS. Hospedagem e publicação do repositório são etapas posteriores.
+O portfólio apresenta minha trajetória acadêmica e profissional, facilita a consulta aos meus trabalhos e permite o contato de recrutadores, empresas e possíveis parceiros. A proposta é reunir, em um único site, informações que normalmente ficam distribuídas entre currículo, redes profissionais e repositórios.
 
-## Funcionalidades
+A aplicação foi construída com React e Vite, com componentes em JavaScript/JSX e estilos em CSS. O conteúdo possui versões em português e inglês e pode ser acessado em computadores e celulares. Além do escopo do laboratório, o site oferece um globo interativo de habilidades e visualização de documentos sem sair da página.
 
-- Página inicial com a visão geral, mais páginas próprias de Sobre Mim, Habilidades e Experiências.
-- Página Sobre Mim com currículo no idioma selecionado (PT/EN) e a carta de recomendação de Gabriel Rangel em PDF, com visualizador dentro do site e download.
-- Página Habilidades com o globo, linguagens, ferramentas, idiomas e diferenciais.
-- Alternância entre globo com cards (padrão) e lista com 32 habilidades, filtros por categoria e contagens, em PT/EN.
-- Motion: loading com spinner e barra no primeiro acesso e a cada troca de página. Textos e cards aparecem uma vez com fade-in e deslocamento curto; a apresentação tem digitação após a saída do loading, os diferenciais surgem de baixo para cima e a timeline avança com um marcador durante a rolagem. A preferência de movimento reduzido é respeitada.
-- Sobre Mim com um parágrafo sobre a trajetória descrita no currículo, seta para acessar os documentos abaixo e, no celular, retrato circular antes do texto.
-- Monitoria de Desenvolvimento de Interfaces Web e Webtech Network na PUC Minas desde setembro de 2026; imagens dos projetos exibidas inteiras, mantendo sua proporção original.
-- Página Experiências com o card profissional e a timeline dos projetos.
-- Menu com Sobre Mim, Habilidades e Experiências; projetos junto ao cartão profissional na página Experiências; contato na página inicial.
-- Apresentação e conteúdo em português e inglês, alternados pelo seletor PT/EN.
-- Menu adaptado ao celular e link para pular diretamente ao conteúdo.
-- Globo 3D de habilidades: rotação, arrasto, links e opção de pausar.
-- Respeito à preferência de redução de movimento; alternativa textual em caso de indisponibilidade do WebGL.
-- Experiências com instituição, cargo, período e descrição.
-- Timeline de projetos gerada a partir de uma lista e ordenada do mais antigo ao mais recente.
-- Cards com descrição, tecnologias, imagem e link do GitHub. Casa Profética AS ONE inclui a imagem enviada pelo autor, React/Next.js/MDX e acesso ao [site publicado](https://casaprofeticaasone.com/).
-- Links de e-mail, LinkedIn, Instagram, GitHub e WhatsApp, com os ícones originais exportados do Figma.
-- WhatsApp com a mensagem: “Olá! Vim pelo seu portfólio e gostaria de saber mais sobre você! 😉”
-- Formulário com nome, e-mail, assunto opcional e mensagem.
-- Validação de campos e estados de envio, sucesso e erro.
-- Integração de envio com EmailJS; sem configuração, o site informa que o envio está pendente.
+## Funcionalidades principais
 
-## Protótipos
-
-As seis imagens abaixo foram exportadas do arquivo Figma. São referências de design, e não capturas da implementação.
-
-### Página principal
-
-![Protótipo principal](docs/prototypes/main.png)
-
-### Desktop
-
-| Projetos | Habilidades e experiências |
+| Área | Recursos implementados |
 | --- | --- |
-| ![Projetos desktop](docs/prototypes/projects-desktop.png) | ![Habilidades desktop](docs/prototypes/skills-desktop.png) |
+| Apresentação | Formação, interesses, objetivos e texto de apresentação em PT/EN |
+| Sobre mim | Trajetória, retrato circular no celular e seta para acessar os documentos |
+| Documentos | Currículos em português e inglês conforme o idioma selecionado; carta de recomendação; paginação, zoom e download |
+| Habilidades | 32 habilidades, incluindo MDX; alternância entre globo com cards e lista; categorias e contagens |
+| Globo 3D | Rotação, arrasto, links e pausa; alternativa textual quando WebGL não está disponível |
+| Experiências | Instituição, cargo, período e duração; total em anos e meses atualizado a partir dos vínculos cadastrados |
+| Projetos | Cinco projetos em ordem cronológica, com nome, descrição, tecnologias, imagem e repositório; links adicionais quando disponíveis |
+| Contato | Links para e-mail, WhatsApp, LinkedIn, Instagram e GitHub; formulário com nome, e-mail, assunto opcional e mensagem |
+| Envio | Integração com EmailJS, validação dos campos, estados de envio/sucesso/erro e reCAPTCHA v2 horizontal |
+| Navegação e acessibilidade | Menu mobile, seletor PT/EN, link para pular ao conteúdo e respeito à preferência de movimento reduzido |
+| Animações | Loading por página, digitação na apresentação, entrada de textos e cards, diferenciais de baixo para cima e timeline progressiva |
 
-### Celular
+## Tecnologias utilizadas
 
-| Página principal | Projetos | Habilidades e experiências |
+### Linguagens, ferramentas e serviços
+
+- **JavaScript/JSX e HTML:** lógica e estrutura dos componentes.
+- **CSS:** layouts com Grid/Flexbox, responsividade e tokens de cores e fontes.
+- **React:** composição da interface, estado e ciclo de vida dos componentes.
+- **Vite e npm:** desenvolvimento, instalação de dependências e build.
+- **Figma:** planejamento das telas e identidade visual.
+- **Git e GitHub:** versionamento e repositório.
+- **EmailJS e Google reCAPTCHA v2:** processamento externo do formulário e verificação antispam.
+- **Google Fonts:** fontes Montserrat e Ibarra Real Nova, com alternativas de sistema.
+
+As tecnologias listadas nos cards dos projetos e nas habilidades representam também outros trabalhos e conhecimentos do autor. Por exemplo, Next.js, Expo e MDX aparecem no conteúdo do portfólio, mas não são dependências desta aplicação.
+
+### Bibliotecas e dependências
+
+Versões resolvidas no `package-lock.json`. Para reproduzir a instalação, utilize `npm ci`.
+
+| Dependência | Versão | Finalidade |
 | --- | --- | --- |
-| ![Página principal mobile](docs/prototypes/home-mobile.png) | ![Projetos mobile](docs/prototypes/projects-mobile.png) | ![Habilidades mobile](docs/prototypes/skills-mobile.png) |
+| `react` / `react-dom` | 19.3.0 | Componentes e renderização |
+| `motion` | 14.3.0 | Animações, loading, digitação e timeline |
+| `react-icons` | 5.7.0 | Ícones da interface e das habilidades |
+| `react-pdf` | 10.3.0 | Visualizador interno de PDF |
+| `three` | 0.186.1 | Renderização do globo 3D |
+| `@react-three/fiber` | 9.8.1 | Integração do Three.js com React |
+| `@react-three/drei` | 10.7.9 | Recursos auxiliares do globo |
+| `@emailjs/browser` | 5.0.3 | Envio das mensagens pelo EmailJS |
 
-A implementação usa o frame principal como referência: seis cards de habilidades com o card de experiência ao lado, logos secundários, diferenciais e contato com foto grande à direita. O formulário foi movido para junto dos ícones, à esquerda da foto, conforme a revisão solicitada. Os textos do protótipo têm tradução para português. Fotos, logos de linguagens e ícones de redes sociais foram exportados das camadas do Figma para arquivos locais, sem substituí-los por ícones de biblioteca.
+O `pdfjs-dist` 5.4.296 é uma dependência transitiva usada pelo visualizador. O reCAPTCHA utiliza o script oficial do Google, sem pacote npm adicional.
 
-O header e a timeline cronológica foram mantidos conforme solicitado. O globo fica na página Habilidades, junto aos cards. Os cargos informados pelo autor foram incluídos no card de experiência; o total é calculado em meses a partir das experiências cadastradas, contando vínculos simultâneos uma única vez. O formulário de contato fica ao lado dos ícones, na área à esquerda da foto; no celular, os elementos se empilham. A frase “Vamos criar algo juntos?” e o rodapé solicitado pelo autor foram preservados. Os logos abaixo da apresentação foram reduzidos, e o trio voltou à composição com uma leve inclinação.
-
-## Tecnologias e dependências
-
-As versões resolvidas estão em `package-lock.json`. Use `npm ci` para reproduzir a instalação.
-
-| Dependência | Finalidade |
-| --- | --- |
-| React / React DOM | Componentes, estados e renderização da interface |
-| Motion | Loading por página, digitação, entradas ao aparecer na tela e timeline progressiva |
-| Vite / plugin React | Servidor de desenvolvimento e build de produção |
-| JavaScript / JSX | Lógica e componentes |
-| CSS | Layout, responsividade, fontes e variáveis de cores |
-| react-icons | Ícones do header, do globo e dos links dos projetos |
-| react-pdf / PDF.js | Visualização interna dos PDFs com paginação, zoom e texto selecionável |
-| three | Geometria e projeção do globo 3D |
-| @react-three/fiber | Integração do Three.js com React |
-| @react-three/drei | Câmera interativa e movimento do globo |
-| @emailjs/browser | Envio do formulário por um serviço externo |
-| ESLint e plugins React | Verificação do código |
-
-As fontes são carregadas pelo Google Fonts em `src/index.css`, com fontes de sistema como alternativa. As fotos e as imagens dos projetos são locais.
+| Dependência de desenvolvimento | Versão | Finalidade |
+| --- | --- | --- |
+| `vite` | 8.3.4 | Servidor local e build |
+| `@vitejs/plugin-react` | 6.1.2 | Integração entre Vite e React |
+| `eslint` | 10.12.0 | Análise estática do código |
+| `@eslint/js` | 10.0.1 | Regras JavaScript do ESLint |
+| `eslint-plugin-react-hooks` | 7.1.1 | Regras dos hooks React |
+| `eslint-plugin-react-refresh` | 0.5.7 | Verificações para atualização durante o desenvolvimento |
+| `globals` | 17.13.0 | Definição dos ambientes do ESLint |
 
 ## Arquitetura
 
-O navegador executa uma aplicação React. O componente `App` compõe as seções, e as informações ficam em arquivos simples dentro de `src/data`.
+A aplicação é uma **SPA (Single Page Application)** executada no navegador. As páginas ficam em `src/pages`, os componentes reutilizáveis em `src/components` e o conteúdo em `src/data`. Essa separação permite atualizar projetos, habilidades e traduções sem reescrever o layout.
 
-As páginas ficam em `src/pages/`. A navegação usa um hook simples (`src/hooks/usePageNavigation.js`) e endereços com `#`, sem uma biblioteca de rotas adicional. Isso permite abrir os links diretamente, atualizar e usar os botões Voltar/Avançar em hospedagens estáticas:
+```mermaid
+flowchart LR
+    Visitor[Visitante] --> App[React no navegador]
+    Data[Arquivos em src/data] --> App
+    App --> Pages[Páginas e componentes]
+    Pages --> PDF[React-PDF e documentos locais]
+    Pages --> Globe[Globo com Three.js]
+    Pages --> Captcha[Google reCAPTCHA v2]
+    Captcha -->|Token de verificação| Form[Formulário]
+    Form -->|Dados e token| EmailJS[EmailJS]
+    EmailJS -->|Validação habilitada no template| Google[Verificação do Google]
+    EmailJS -->|Envio aprovado| Inbox[E-mail de Abner]
+```
 
-| Página | Endereço |
-| --- | --- |
-| Início | `#/` |
-| Sobre mim e recomendações | `#/sobre` |
-| Habilidades e globo | `#/habilidades` |
-| Experiências e projetos | `#/experiencias` |
-| Acesso direto aos projetos | `#/experiencias/projetos` |
-| Contato na página inicial | `#/contato` |
+O processamento de e-mail é delegado ao EmailJS. O projeto não possui API própria nem banco de dados: os dados apresentados são arquivos locais, e as mensagens são processadas pelo serviço externo. A verificação do token do reCAPTCHA deve estar habilitada no template do EmailJS.
 
-O formulário usa o serviço EmailJS para processar o envio de e-mail: **navegador → EmailJS → caixa de e-mail de Abner**. Não há API própria ou banco de dados neste escopo.
+A navegação usa `usePageNavigation` e rotas com `#`, permitindo abrir os endereços diretamente e usar Voltar/Avançar em hospedagens estáticas. O globo e o visualizador de PDF são carregados sob demanda. O Vite copia os recursos auxiliares do PDF.js para `public/pdfjs/` ao iniciar ou gerar o build.
 
-O globo é carregado separadamente por `React.lazy`; sua renderização pausa quando ele fica fora da tela. É o componente mais técnico do projeto, por utilizar gráficos 3D. O restante da interface usa componentes pequenos e CSS comum.
+O contador profissional utiliza os dados de `experiences.js`: vínculos com datas são combinados sem duplicar meses simultâneos; vínculos antigos com datas incompletas usam a duração informada pelo autor. As animações respeitam movimento reduzido e evitam atualizar o estado React a cada frame da rolagem.
+
+## Protótipos e decisões de design
+
+O [arquivo do Figma](https://www.figma.com/design/mfA3J610RzWl3o9r5k5BaF/Portfolio---website?node-id=0-1) reúne o planejamento desktop e mobile. As miniaturas abaixo foram exportadas dos seis frames desse arquivo; o Figma permite consultar os detalhes em resolução completa.
+
+<details>
+<summary>Ver os seis protótipos</summary>
+
+| Página principal | Projetos desktop | Habilidades e experiências desktop |
+| --- | --- | --- |
+| [![Protótipo principal](docs/prototypes/main.png)](docs/prototypes/main.png) | [![Protótipo de projetos desktop](docs/prototypes/projects-desktop.png)](docs/prototypes/projects-desktop.png) | [![Protótipo de habilidades desktop](docs/prototypes/skills-desktop.png)](docs/prototypes/skills-desktop.png) |
+
+| Página principal mobile | Projetos mobile | Habilidades e experiências mobile |
+| --- | --- | --- |
+| [![Protótipo principal mobile](docs/prototypes/home-mobile.png)](docs/prototypes/home-mobile.png) | [![Protótipo de projetos mobile](docs/prototypes/projects-mobile.png)](docs/prototypes/projects-mobile.png) | [![Protótipo de habilidades mobile](docs/prototypes/skills-mobile.png)](docs/prototypes/skills-mobile.png) |
+
+</details>
+
+A identidade combina fundo claro, verde escuro, títulos de destaque e uma fonte serifada nos textos de apresentação. O layout usa cards para facilitar a leitura e mantém as imagens dos projetos em sua proporção original.
+
+Durante o desenvolvimento, o menu passou a reunir Sobre mim, Habilidades, Experiências e Contato. Os projetos foram incorporados à página Experiências, ao lado do resumo profissional, e continuam acessíveis pela página inicial. O formulário fica ao lado da foto de contato no desktop; no celular, os blocos se empilham. As capturas da implementação estão na seção [Demonstração](#demonstração-e-instruções-de-uso).
 
 ## Instalação e execução
 
-Pré-requisito: **Node.js 22.12 ou superior** (ou uma versão compatível com o campo `engines` do Vite) e npm. A implementação foi verificada com Node.js 22.14.0.
+### Pré-requisitos
 
-Na pasta do projeto:
+- **Node.js 22.12 ou superior**, em uma versão compatível com o Vite instalado. Ambiente de desenvolvimento conferido com Node.js 22.14.0 e npm 11.3.0.
+- **npm** e **Git**.
+- Navegador atualizado; WebGL é necessário para o globo 3D. Sem WebGL, há uma alternativa textual.
+- Conexão com a internet para Google Fonts, reCAPTCHA e EmailJS.
+
+### Instalação e desenvolvimento
 
 ```bash
+git clone https://github.com/abneralmeidacord/abneralmeida-portfolio.git
+cd abneralmeida-portfolio
 npm ci
 npm run dev
 ```
 
-Abra o endereço indicado no terminal. Normalmente é `http://localhost:5173`; se a porta estiver ocupada, o Vite informa outra.
+Abra o endereço exibido no terminal, normalmente `http://localhost:5173`. Se a porta estiver ocupada, o Vite informa outra. Para o reCAPTCHA, utilize um domínio autorizado na chave: `localhost` funciona na configuração local já conferida; `127.0.0.1` precisa ser cadastrado separadamente.
 
-| Comando | O que faz |
+### Build e preview
+
+```bash
+npm run build
+npm run preview
+```
+
+O build gera os arquivos de produção em `dist/`. O preview permite conferir esses arquivos localmente e não publica o site.
+
+| Comando | Função |
 | --- | --- |
-| `npm run dev` | Abre o servidor local e atualiza a página ao salvar arquivos |
-| `npm run lint` | Verifica o código JavaScript/JSX |
-| `npm test` | Verifica a contagem de experiência e sua tradução |
-| `npm run build` | Gera o site de produção em `dist/` |
-| `npm run preview` | Serve o build para conferência local |
+| `npm run dev` | Desenvolvimento com atualização ao salvar |
+| `npm run lint` | Verificação do código JavaScript/JSX |
+| `npm test` | Testes automatizados do cálculo de experiência |
+| `npm run build` | Geração do site em `dist/` |
+| `npm run preview` | Conferência local do build |
 
-O Vite cuida do servidor e da compilação. A programação dos componentes continua sendo React.
+## Variáveis de ambiente e envio de e-mail
 
-## Como editar
+Crie um arquivo `.env.local` **na raiz do projeto**, ao lado de `package.json`, e preencha com os dados da sua conta:
 
-- **Cores e fontes:** `src/styles/tokens.css`. Cada componente usa `var(--color-...)` e `var(--font-...)`.
-- **Importação das fontes e estilos gerais:** `src/index.css`.
-- **Contato e WhatsApp:** `src/data/profile.js`.
-- **Projetos, datas e tecnologias:** `src/data/projects.js`.
-- **Experiências:** `src/data/experiences.js`. Informe `startDate` no formato `AAAA-MM`; omita `endDate` enquanto o vínculo estiver ativo. Para encerrar, informe `endDate` no mesmo formato. Quando os meses de início/fim forem desconhecidos, use `durationMonths` com a duração informada pelo autor.
-- **Habilidades do globo:** `src/data/skills.js`.
-- **Ícones originais do Figma:** `src/assets/icons/`, importados em `src/data/designAssets.js`.
-- **Textos PT/EN:** `src/data/translations.js`.
-- **Cartas de recomendação:** `src/data/recommendations.js` e PDFs em `public/recommendations/`. Veja [como adicionar as cartas](docs/recommendations.md).
-- **Currículos PT/EN:** `src/data/resumes.js` e PDFs em `public/resumes/`. Veja [como adicionar os currículos](docs/recommendations.md).
-- **Aparência de uma seção:** o arquivo CSS do componente correspondente.
+```dotenv
+VITE_EMAILJS_SERVICE_ID=seu_service_id
+VITE_EMAILJS_TEMPLATE_ID=seu_template_id_de_contato
+VITE_EMAILJS_PUBLIC_KEY=sua_chave_publica_emailjs
+VITE_RECAPTCHA_SITE_KEY=sua_chave_publica_recaptcha_v2
+```
 
-As entradas usam `useInView` e animam apenas `opacity` e `transform`, com distância de 18 px e duração de 0,58 s. Elas não voltam a esconder conteúdo ao sair da tela. Só a timeline acompanha o scroll: `useScroll` + `useSpring` controlam a linha, o marcador e a escala dos pontos. As alturas são medidas por `ResizeObserver` ao mudar o layout; não há `setState` por frame de scroll ou digitação. A preferência de movimento reduzido mostra o conteúdo completo e mantém a timeline estática.
+| Variável | Finalidade |
+| --- | --- |
+| `VITE_EMAILJS_SERVICE_ID` | Serviço de e-mail conectado no EmailJS |
+| `VITE_EMAILJS_TEMPLATE_ID` | Template principal que recebe o contato |
+| `VITE_EMAILJS_PUBLIC_KEY` | Chave pública da conta EmailJS |
+| `VITE_RECAPTCHA_SITE_KEY` | Chave pública do site no reCAPTCHA v2 |
 
-O contador usa meses completos entre os meses cadastrados e o mês atual no fuso de São Paulo, descontando a sobreposição dos vínculos com datas. Os três vínculos antigos conservam suas durações informadas (20, 5 e 10 meses), pois só há anos de início/fim. Os dois vínculos na PUC começaram em setembro de 2026 e contam como um único período no total. Em outubro de 2026, o total é 36 meses (3 anos). A contagem é atualizada ao abrir a página e a cada hora enquanto ela estiver aberta.
+O `.env.local` é ignorado pelo Git. Valores com prefixo `VITE_` são incluídos no navegador: **não coloque senhas ou chaves privadas nesse arquivo**. Após alterar os valores, reinicie o servidor; em produção, gere um novo build. Sem os dados necessários, o formulário mantém o envio desativado e indica os canais alternativos.
 
-Cada componente tem um arquivo `.jsx` com sua lógica e marcação e um arquivo `.css` com seus estilos. Não há necessidade de criar um terceiro arquivo JavaScript para componentes pequenos.
+### Configuração do EmailJS
 
-## Configuração do EmailJS
+1. Conecte um serviço de e-mail e crie um template de contato.
+2. Defina **To Email** como `abnersolk@gmail.com`, **From Name** como `{{from_name}}`, **Reply-To** como `{{reply_to}}` e mantenha o e-mail padrão do serviço em **From Email**.
+3. Use `{{subject}}` no assunto e `{{from_name}}`, `{{from_email}}` e `{{message}}` no corpo. O site também envia `to_name` e `to_email`.
+4. Para confirmação automática ao visitante, vincule o template de resposta na aba **Auto-Reply** do template principal. O destinatário dessa resposta deve ser `{{from_email}}`.
 
-Os [modelos HTML de contato e resposta automática](docs/emailjs/README.md) seguem a paleta do site e já usam as variáveis enviadas pelo formulário. Veja também a [prévia dos dois e-mails](docs/emailjs/preview.html), disponível pelo servidor local.
+### Configuração do reCAPTCHA
 
-1. Crie um serviço de e-mail e um template na sua conta EmailJS.
-2. Configure o destinatário fixo como `abnersolk@gmail.com`.
-3. No template, use `{{from_name}}`, `{{from_email}}`, `{{subject}}` e `{{message}}`. Configure Reply-To como `{{reply_to}}`. O formulário também envia `to_email` e `to_name`; mantenha **To Email fixo em `abnersolk@gmail.com`** no painel para garantir o destinatário.
-4. Crie ou edite o arquivo `.env.local` na raiz do projeto.
-5. Preencha `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID` e `VITE_EMAILJS_PUBLIC_KEY`.
-6. Reinicie o servidor. Após publicar, configure os mesmos valores no provedor e gere um novo build.
-7. Envie uma mensagem de teste e confirme o recebimento.
+1. No [painel do Google reCAPTCHA](https://www.google.com/recaptcha/admin/create), cadastre o site com **reCAPTCHA v2, caixa “Não sou um robô”**.
+2. Autorize o domínio publicado e os endereços usados no desenvolvimento, sem protocolo ou porta. Prefira uma chave separada para desenvolvimento.
+3. Coloque apenas a **Site Key** em `VITE_RECAPTCHA_SITE_KEY`.
+4. No EmailJS, abra o template principal em **Settings**, marque **Enable reCAPTCHA V2 verification**, cole a **Secret Key** do Google e salve. A chave secreta fica somente no EmailJS.
+5. Resolva o desafio manualmente e envie uma mensagem de teste para confirmar o recebimento e, se configurada, a resposta automática.
 
-### Proteção com reCAPTCHA v2
+O formulário envia o token em `g-recaptcha-response`, bloqueia tentativas sem verificação e descarta o token após uso, expiração ou troca de idioma. **A opção de validação no EmailJS é obrigatória para proteger também chamadas diretas ao serviço.** O reCAPTCHA usa o formato horizontal e acompanha a largura dos campos, preservando a proporção.
 
-O formulário exige o reCAPTCHA v2 antes de enviar. Sem a chave pública, ele mantém o envio desativado e oferece contato por e-mail ou WhatsApp.
+## Deploy
 
-1. No [painel do Google reCAPTCHA](https://www.google.com/recaptcha/admin/create), registre o site como **reCAPTCHA v2 → Caixa de seleção “Não sou um robô”**. Cadastre o domínio publicado, `localhost` e, se usado no desenvolvimento, `127.0.0.1` (sem protocolo ou porta).
-2. Acrescente `VITE_RECAPTCHA_SITE_KEY=sua_site_key` ao `.env.local` e às variáveis da hospedagem. Reinicie o servidor local ou gere um novo build.
-3. No template **Contact Us** do EmailJS, abra **Settings**, marque **Enable reCAPTCHA V2 verification**, cole a **Secret Key** do Google e salve. A chave secreta fica apenas no EmailJS: nunca a coloque em uma variável `VITE_`.
-4. Se usar a confirmação automática, vincule o template de resposta na aba **Auto-Reply** do Contact Us. A verificação fica no template principal.
-5. Confira que o envio sem resolver o desafio é bloqueado; depois, resolva-o manualmente e confirme o recebimento. Faça o teste também no domínio publicado.
+**Publicação pendente.** A aplicação gera arquivos estáticos e pode ser hospedada, por exemplo, na Vercel. Esta seção descreve o procedimento; não representa um deploy já realizado.
 
-O site envia o token como `g-recaptcha-response`, e o EmailJS precisa estar configurado para validá-lo no servidor. Ativar essa opção no painel é obrigatório para bloquear chamadas diretas à API. O token é descartado após cada tentativa, expiração ou troca de idioma.
+1. Disponibilize a versão final no repositório do GitHub e importe esse repositório no provedor.
+2. Para a Vercel, selecione o projeto como **Vite**, com as seguintes configurações:
 
-[Documentação do EmailJS sobre reCAPTCHA](https://www.emailjs.com/docs/user-guide/adding-captcha-verification/).
+   | Configuração | Valor |
+   | --- | --- |
+   | Diretório raiz | Raiz deste repositório |
+   | Instalação | `npm ci` |
+   | Build | `npm run build` |
+   | Diretório de saída | `dist` |
 
-Use somente a **chave pública** do EmailJS. Variáveis com prefixo `VITE_` ficam visíveis no navegador; elas não servem para guardar senhas ou chaves privadas.
+3. Configure as quatro variáveis públicas da seção anterior antes do build.
+4. Cadastre o domínio definitivo na chave do reCAPTCHA e confirme a validação no EmailJS.
+5. Publique e confira as rotas, os PDFs, as imagens, a troca de idioma e o formulário no endereço online.
+6. Substitua “ainda não publicado” em [Links úteis](#links-úteis) pelo link definitivo e atualize o status da entrega.
 
-[Exemplo oficial do EmailJS com React](https://www.emailjs.com/docs/examples/reactjs/)
+A navegação utiliza fragmentos `#/...`, que continuam sendo resolvidos no navegador. Não é necessário criar um servidor de rotas para essas páginas. Referência: [Vite na Vercel](https://vercel.com/docs/frameworks/frontend/vite).
 
 ## Estrutura de pastas
 
 ```text
 abneralmeida-portfolio/
 ├── docs/
-│   ├── prototypes/             # Seis exports do Figma
-│   ├── references/             # Globo original e licença MIT
-│   └── entregas.md             # Checklist das três sprints
+│   ├── prototypes/                 # Seis miniaturas exportadas do Figma
+│   ├── screenshots/                # Capturas da aplicação implementada
+│   └── references/                 # Licenças de referências e ícones
 ├── public/
-│   └── favicon.svg
+│   ├── favicon.svg
+│   ├── recommendations/            # Carta de recomendação em PDF
+│   ├── resumes/                    # Currículos PT/EN em PDF
+│   └── pdfjs/                      # Recursos gerados pelo vite.config.js
 ├── src/
-│   ├── assets/images/          # Fotos e previews exportados do Figma
+│   ├── assets/
+│   │   ├── icons/                  # Ícones locais e logos SVG
+│   │   └── images/                 # Fotos e imagens dos projetos
 │   ├── components/
-│   │   ├── Header.jsx / Header.css
-│   │   ├── About.jsx / About.css
-│   │   ├── Skills.jsx / Skills.css
-│   │   ├── SkillsGlobe.jsx / SkillsGlobe.css
-│   │   ├── Experiences.jsx / Experiences.css
-│   │   ├── Projects.jsx / Projects.css
-│   │   ├── ProjectCard.jsx / ProjectCard.css
-│   │   ├── Contact.jsx / Contact.css
-│   │   ├── SocialLinks.jsx / SocialLinks.css
-│   │   └── Footer.jsx / Footer.css
-│   ├── data/
+│   │   ├── About/
+│   │   ├── Contact/                # Formulário e Recaptcha.jsx
+│   │   ├── DocumentCard/
+│   │   ├── Experiences/
+│   │   ├── Footer/
+│   │   ├── Header/
+│   │   ├── Motion/                 # Loading, Reveal e Typewriter
+│   │   ├── PdfViewer/
+│   │   ├── ProjectCard/
+│   │   ├── Projects/               # Timeline e seus itens
+│   │   ├── Recommendations/
+│   │   ├── Resume/
+│   │   ├── SkillIcon/
+│   │   ├── Skills/
+│   │   ├── SkillsGlobe/
+│   │   ├── SkillsList/
+│   │   └── SocialLinks/
+│   ├── contexts/PageReadyContext.js
+│   ├── data/                       # Perfil, projetos, habilidades e traduções
+│   ├── hooks/usePageNavigation.js
+│   ├── pages/                      # Home, About, Skills e Experiences
 │   ├── styles/tokens.css
-│   ├── App.jsx / App.css
+│   ├── utils/                      # Cálculo de experiência e testes
+│   ├── App.jsx
+│   ├── App.css
 │   ├── index.css
 │   └── main.jsx
-├── .env.example
+├── .env.local                      # Configuração local, não versionada
+├── .gitignore
+├── eslint.config.js
 ├── index.html
 ├── package.json
 ├── package-lock.json
-├── eslint.config.js
+├── README.md
 └── vite.config.js
 ```
 
-## Verificação e entregas
+As pastas `node_modules/`, `dist/` e `public/pdfjs/` são geradas e ignoradas pelo Git. Os componentes possuem seus próprios arquivos `.jsx` e `.css` dentro de cada diretório.
 
-Consulte [o checklist das sprints](docs/entregas.md). Validação realizada: lint e build aprovados; versão de produção conferida em desktop e em 390 × 844 px; seis imagens carregadas; timeline cronológica; troca PT/EN; menu mobile; arrasto e pausa do globo; validação de e-mail inválido e aviso de envio não configurado. O recebimento real de e-mail ainda não foi testado.
+## Demonstração e instruções de uso
 
-Os previews de StarWars e COBRINHA.ZIP são as capas usadas no Figma. Para a S03, acrescente capturas ou GIFs desses projetos realmente em execução. Os projetos aceitam `demo` para uma demonstração externa ou `website` para um site publicado. Use `imageWidth` e `imageHeight` quando o preview tiver dimensões diferentes das imagens padrão.
+As imagens abaixo mostram a implementação executada localmente, em contraste com os protótipos do Figma.
 
-As datas dos projetos e os períodos profissionais foram transcritos do protótipo. Os cargos foram informados pelo autor; as descrições são breves e podem ser enriquecidas com atividades reais. A stack do Vclean foi conferida no repositório, que usa Expo, apesar de a capa mostrar uma landing page.
+| Página inicial | Habilidades em lista |
+| --- | --- |
+| [![Página inicial do portfólio](docs/screenshots/home-desktop.png)](docs/screenshots/home-desktop.png) | [![Lista de habilidades](docs/screenshots/skills-list-desktop.png)](docs/screenshots/skills-list-desktop.png) |
 
-Após a última revisão: lint e build aprovados; páginas de Sobre Mim, Habilidades e Experiências verificadas; Voltar/Avançar e recarregamento direto dos links funcionando; globo e sua pausa na página Habilidades; quatro projetos na página Experiências; área de recomendações vazia até a inclusão das cartas; troca PT/EN; menu mobile e ausência de overflow horizontal em 390 × 844 px. Veja [as camadas exportadas](docs/figma-assets.md) e [a captura atual do contato](docs/qa/contact-pages-layout.jpg). O recebimento real de e-mail continua pendente da configuração do EmailJS.
+| Experiências e projetos | Sobre mim no celular |
+| --- | --- |
+| [![Timeline ao lado das experiências](docs/screenshots/experiences-desktop.png)](docs/screenshots/experiences-desktop.png) | <img src="docs/screenshots/about-mobile.png" alt="Foto circular antes da apresentação no celular" width="195" /> |
 
-## Hospedagem
+### Como navegar
 
-Pendente, conforme o escopo combinado. Para publicar na Vercel, use o preset Vite, comando `npm run build` e pasta `dist`. Configure as variáveis do EmailJS antes do build.
+| Área | Endereço após a URL base | Uso |
+| --- | --- | --- |
+| Início | `#/` | Visão geral e acesso ao contato |
+| Sobre mim | `#/sobre` | Apresentação, currículo e recomendação |
+| Habilidades | `#/habilidades` | Alternar entre globo/cards e lista; filtrar categorias |
+| Experiências | `#/experiencias` | Histórico profissional e timeline dos projetos |
+| Projetos | `#/experiencias/projetos` | Acesso direto à timeline |
+| Contato | `#/contato` | Ícones e formulário na página inicial |
 
-Depois, acrescente o endereço publicado neste README e confirme o envio do formulário no site online. O repositório Git local foi inicializado. A criação do repositório remoto e a publicação no GitHub devem ser concluídas antes da entrega.
+Use **PT/EN** para trocar o idioma. Em Sobre mim, abra o currículo ou a recomendação para usar o visualizador interno; o currículo acompanha o idioma selecionado. Em Habilidades, use os botões de visualização e os filtros da lista. Na timeline, os links levam aos repositórios e às demonstrações disponíveis. No formulário, preencha os campos obrigatórios e resolva o reCAPTCHA antes de enviar.
 
-## Autor e créditos
+### Como atualizar o conteúdo
 
-Os SVGs de Canva e Affinity foram vetorizados a partir das imagens fornecidas pelo autor, com cores sólidas. O ursinho do Zustand foi adaptado da coleção [Devicon](https://github.com/devicons/devicon/blob/master/icons/zustand/zustand-plain.svg), em marrom, com a [licença MIT preservada](docs/references/devicon-LICENSE.txt).
+| Alteração | Arquivo ou pasta |
+| --- | --- |
+| Perfil e redes sociais | `src/data/profile.js` |
+| Projetos, imagens, datas e tecnologias | `src/data/projects.js` |
+| Instituições, cargos e períodos | `src/data/experiences.js` |
+| Habilidades do globo e da lista | `src/data/skills.js` |
+| Traduções PT/EN | `src/data/translations.js` |
+| Currículos | `src/data/resumes.js` e `public/resumes/` |
+| Cartas de recomendação | `src/data/recommendations.js` e `public/recommendations/` |
+| Cores e fontes | `src/styles/tokens.css` |
 
-A lista de habilidades e os filtros foram adaptados do [SkillsSection de João Paulo Aramuni](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web/tree/main/PROJETOS/React/SkillsGlobe/src/components/SkillsSection), mantendo os dados deste portfólio e seus estilos. A licença MIT está em [aramuni-skills-section-LICENSE.txt](docs/references/aramuni-skills-section-LICENSE.txt).
+Nos projetos, `date` usa `AAAA-MM` para ordenação; `period` é o texto exibido. Utilize `website` para site publicado ou `demo` para demonstração, e informe `imageWidth`/`imageHeight` quando necessário. Nas experiências, cadastre `startDate` e `endDate` como `AAAA-MM`; deixe `endDate` ausente em vínculos atuais. Quando os meses exatos forem desconhecidos, use `durationMonths` com a duração confirmada.
 
-**Abner Almeida** — Engenharia de Software, PUC Minas.
+## Testes
 
-O componente `SkillsGlobe.jsx` e seu CSS foram adaptados do [portfólio de João Paulo Aramuni](https://github.com/joaopauloaramuni/joaopauloaramuni-portfolio), removendo a integração com terminal, tradução e temas do projeto original e usando os tokens deste portfólio.
+```bash
+npm run lint
+npm test
+npm run build
+```
 
-O código original está em `docs/references/SkillsGlobe.original.jsx` e `SkillsGlobe.original.css`. A licença MIT, incluindo o copyright de João Paulo Aramuni, foi preservada em [aramuni-LICENSE.txt](docs/references/aramuni-LICENSE.txt).
+Os testes automatizados usam o executor nativo do Node.js (`node:test`) e `node:assert`, sem framework adicional. Há **cinco casos** em `src/utils/experienceDuration.test.js`, cobrindo dados atuais, vínculos em andamento/futuros, sobreposição de períodos, vínculos encerrados e formatação PT/EN. Os cinco passaram na revisão da documentação.
+
+Lint e build foram aprovados na revisão da implementação. As conferências manuais incluem navegação, troca de idioma, layout desktop/mobile, globo e lista, PDFs e bloqueio de envio sem reCAPTCHA. Em tela de 390 × 844 px, o formulário foi conferido sem overflow horizontal. Não há suíte E2E automatizada nem medição de cobertura configuradas.
+
+O recebimento real de uma mensagem e a resposta automática ainda precisam ser confirmados por um teste manual com o desafio resolvido e com a configuração do EmailJS concluída.
+
+## Entregas do laboratório
+
+| Sprint | Entrega prevista no LAB01 | Evidência e situação neste repositório |
+| --- | --- | --- |
+| **S01 - Planejamento e prototipação** | Descrição, tecnologias, estrutura inicial, protótipos e navegação | Documentados neste README; seis protótipos e link do Figma disponíveis |
+| **S02 - Funcionalidades principais** | Sobre mim PT/EN, timeline, experiências, formulário, validações e responsividade | Interface implementada localmente; confirmar recebimento de e-mail e completar as descrições das experiências |
+| **S03 - Hospedagem e finalização** | Deploy, ajustes de usabilidade, mídias dos projetos em execução e README final | Documentação e capturas atualizadas; publicação e evidências restantes pendentes |
+
+### Pendências da entrega
+
+- [ ] Publicar o portfólio em nuvem e incluir o link definitivo neste README.
+- [ ] Confirmar o recebimento real do formulário e da resposta automática, se habilitada, após resolver o reCAPTCHA.
+- [ ] Conferir a validação do reCAPTCHA e as demais funcionalidades no domínio publicado.
+- [ ] Completar e exibir uma breve descrição das atividades em cada experiência, além de instituição, cargo e período já apresentados.
+- [ ] Substituir as capas de StarWars Wiki e COBRINHA.ZIP por imagens ou GIFs que evidenciem os projetos em execução, conforme solicitado na Sprint 03.
+
+## Documentações utilizadas
+
+- [Template de README do Prof. Aramuni](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web/blob/main/TEMPLATES/template_README.md)
+- [React](https://react.dev/)
+- [Vite](https://vite.dev/guide/)
+- [Motion para React](https://motion.dev/docs/react)
+- [Three.js](https://threejs.org/docs/)
+- [React Three Fiber](https://r3f.docs.pmnd.rs/)
+- [Drei](https://drei.docs.pmnd.rs/)
+- [React-PDF](https://github.com/wojtekmaj/react-pdf)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [EmailJS com React](https://www.emailjs.com/docs/examples/reactjs/)
+- [EmailJS: verificação com reCAPTCHA](https://www.emailjs.com/docs/user-guide/adding-captcha-verification/)
+- [Google reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [Vite na Vercel](https://vercel.com/docs/frameworks/frontend/vite)
+
+## Autor
+
+| Nome | Formação | GitHub | LinkedIn | E-mail |
+| --- | --- | --- | --- | --- |
+| Abner Cordeiro de Almeida | Engenharia de Software, PUC Minas | [abneralmeidacord](https://github.com/abneralmeidacord) | [Abner Almeida](https://www.linkedin.com/in/abner-almeida-/) | [abnersolk@gmail.com](mailto:abnersolk@gmail.com) |
+
+## Contribuição
+
+Sugestões e correções podem ser propostas por issues ou pull requests. Descreva a mudança e seu motivo, mantenha o padrão de componentes e traduções PT/EN e execute `npm run lint`, `npm test` e `npm run build` antes de enviar alterações de código. Em mudanças visuais, inclua uma captura e confira desktop e mobile.
+
+## Agradecimentos e créditos
+
+- **PUC Minas** e **Prof. Dr. João Paulo Carneiro Aramuni**, pelo contexto acadêmico, enunciado e template de documentação.
+- Globo adaptado do [portfólio de João Paulo Aramuni](https://github.com/joaopauloaramuni/joaopauloaramuni-portfolio), ajustado à identidade visual e ao conteúdo deste projeto.
+- Lista e filtros de habilidades adaptados do [SkillsSection do professor](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web/tree/main/PROJETOS/React/SkillsGlobe/src/components/SkillsSection), com [licença MIT preservada](docs/references/aramuni-skills-section-LICENSE.txt).
+- Ursinho do Zustand adaptado da coleção [Devicon](https://github.com/devicons/devicon), em marrom, com [licença MIT preservada](docs/references/devicon-LICENSE.txt).
+- Logos de Canva e Affinity vetorizados a partir das imagens fornecidas pelo autor. Fotos, imagens dos projetos e demais ícones foram fornecidos pelo autor ou exportados do seu Figma.
+
+## Licença
+
+O repositório ainda não possui um arquivo de licença geral para o código autoral. As dependências e os materiais de terceiros mantêm suas próprias licenças e atribuições; consulte as referências acima e os arquivos em `docs/references/`.
