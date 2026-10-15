@@ -5,12 +5,15 @@
 .about-main {
     display: grid;
     grid-template-columns: 1.0667fr 1fr;
-    align-items: end;
+    align-items: center;
     gap: 3.125%;
 }
 
 .about-copy {
+    grid-column: 1;
+    grid-row: 1;
     padding-block: 30px;
+    text-align: center;
 }
 
 .about-greeting {
@@ -45,6 +48,8 @@
 }
 
 .about-photo {
+    grid-column: 2;
+    grid-row: 1;
     width: 100%;
     height: auto;
     align-self: start;
@@ -108,14 +113,21 @@
     .about-main {
         grid-template-columns: 1fr;
         gap: 24px;
+        padding-top: 28px;
     }
 
     .about-copy {
+        grid-row: 2;
         padding-block: 20px 0;
     }
 
     .about-photo {
-        width: min(420px, 100%);
+        grid-column: 1;
+        width: min(240px, 70vw);
+        height: min(240px, 70vw);
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: 50% 34%;
         margin-inline: auto;
     }
 

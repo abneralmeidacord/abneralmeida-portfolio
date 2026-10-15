@@ -9,5 +9,5 @@ export default function SocialLinks() {
     { name: 'GitHub', href: profile.github, image: designIcons.github },
     { name: 'WhatsApp', href: profile.whatsapp, image: designIcons.whatsapp },
   ]
-  return <div className="social-links">{links.map(({name, href, image}) => <a href={href} target="_blank" rel="noreferrer" key={name} aria-label={name} title={name} className={name === 'E-mail' ? 'social-email' : undefined}><img src={image} alt="" loading="lazy" /></a>)}</div>
+  return <div className="social-links">{links.map(({ name, href, image }) => <a href={href} target="_blank" rel="noreferrer" key={name} aria-label={name} title={name} className={name === 'E-mail' ? 'social-email' : undefined}><img src={image} alt="" loading="lazy" /></a>)}</div>
 }

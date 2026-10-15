@@ -21,8 +21,12 @@ A interface local está implementada. O envio de e-mail depende da configuraçã
 - Página inicial com a visão geral, mais páginas próprias de Sobre Mim, Habilidades e Experiências.
 - Página Sobre Mim com currículo no idioma selecionado (PT/EN) e a carta de recomendação de Gabriel Rangel em PDF, com visualizador dentro do site e download.
 - Página Habilidades com o globo, linguagens, ferramentas, idiomas e diferenciais.
+- Alternância entre globo com cards (padrão) e lista de habilidades com filtros por categoria e contagens, em PT/EN.
+- Motion: loading inicial com spinner e barra ligados aos recursos da página, apresentação digitada, blocos que convergem e esmaecem com o scroll, diferenciais com fade-in de baixo para cima e timeline com linha e marcadores animados. A preferência de movimento reduzido é respeitada.
+- Sobre Mim com um parágrafo sobre a trajetória descrita no currículo; no celular, retrato circular antes do texto.
+- Monitoria de Desenvolvimento de Interfaces Web e Webtech Network na PUC Minas desde setembro de 2026; imagens dos projetos preenchendo os cards com `object-fit: fill`.
 - Página Experiências com o card profissional e a timeline dos projetos.
-- Menu de projetos direcionado à timeline na página Experiências; contato na página inicial.
+- Menu com Sobre Mim, Habilidades e Experiências; projetos junto ao cartão profissional na página Experiências; contato na página inicial.
 - Apresentação e conteúdo em português e inglês, alternados pelo seletor PT/EN.
 - Menu adaptado ao celular e link para pular diretamente ao conteúdo.
 - Globo 3D de habilidades: rotação, arrasto, links e opção de pausar.
@@ -67,6 +71,7 @@ As versões resolvidas estão em `package-lock.json`. Use `npm ci` para reproduz
 | Dependência | Finalidade |
 | --- | --- |
 | React / React DOM | Componentes, estados e renderização da interface |
+| Motion | Animações de carregamento, texto e scroll |
 | Vite / plugin React | Servidor de desenvolvimento e build de produção |
 | JavaScript / JSX | Lógica e componentes |
 | CSS | Layout, responsividade, fontes e variáveis de cores |
@@ -141,7 +146,7 @@ Cada componente tem um arquivo `.jsx` com sua lógica e marcação e um arquivo 
 
 1. Crie um serviço de e-mail e um template na sua conta EmailJS.
 2. Configure o destinatário fixo como `abnersolk@gmail.com`.
-3. No template, use `{{from_name}}`, `{{from_email}}`, `{{subject}}` e `{{message}}`. Configure Reply-To como `{{from_email}}`.
+3. No template, use `{{from_name}}`, `{{from_email}}`, `{{subject}}` e `{{message}}`. Configure Reply-To como `{{reply_to}}`. O formulário também envia `to_email` e `to_name`; mantenha **To Email fixo em `abnersolk@gmail.com`** no painel para garantir o destinatário.
 4. Copie `.env.example` para `.env.local`.
 5. Preencha `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID` e `VITE_EMAILJS_PUBLIC_KEY`.
 6. Reinicie o servidor. Após publicar, configure os mesmos valores no provedor e gere um novo build.
@@ -204,6 +209,8 @@ Pendente, conforme o escopo combinado. Para publicar na Vercel, use o preset Vit
 Depois, acrescente o endereço publicado neste README e confirme o envio do formulário no site online. O repositório Git local foi inicializado. A criação do repositório remoto e a publicação no GitHub devem ser concluídas antes da entrega.
 
 ## Autor e créditos
+
+A lista de habilidades e os filtros foram adaptados do [SkillsSection de João Paulo Aramuni](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web/tree/main/PROJETOS/React/SkillsGlobe/src/components/SkillsSection), mantendo os dados deste portfólio e seus estilos. A licença MIT está em [aramuni-skills-section-LICENSE.txt](docs/references/aramuni-skills-section-LICENSE.txt).
 
 **Abner Almeida** — Engenharia de Software, PUC Minas.
 

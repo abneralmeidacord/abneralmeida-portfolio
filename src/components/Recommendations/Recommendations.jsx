@@ -1,15 +1,16 @@
 import { recommendations } from '../../data/recommendations.js'
 import DocumentCard from '../DocumentCard/DocumentCard.jsx'
+import ScrollReveal from '../Motion/ScrollReveal.jsx'
 import './Recommendations.css'
 
 export default function Recommendations({ text, language }) {
   const localize = value => typeof value === 'string' ? value : value?.[language]
   return <section id="recomendacoes" className="section container recommendations" aria-labelledby="recommendations-title">
-    <div className="section-heading">
+    <ScrollReveal className="section-heading">
       <p className="eyebrow">{text.recommendationsEyebrow}</p>
       <h2 id="recommendations-title">{text.recommendationsTitle}</h2>
       <p>{text.recommendationsIntro}</p>
-    </div>
+    </ScrollReveal>
     <div className="recommendations-list">
       {recommendations.length === 0 ? <DocumentCard title={text.recommendationsTitle}
         description={text.recommendationsEmpty} text={text} readLabel={text.readLetter} /> :

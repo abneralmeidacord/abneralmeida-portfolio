@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState } from 'react'
 import { FiEye, FiDownload, FiFileText } from 'react-icons/fi'
+import ScrollReveal from '../Motion/ScrollReveal.jsx'
 import './DocumentCard.css'
 
 const PdfViewer = lazy(() => import('../PdfViewer/PdfViewer.jsx'))
@@ -8,7 +9,7 @@ export default function DocumentCard({ title, description, badge, file, text, re
   const [viewerOpen, setViewerOpen] = useState(false)
   const url = file ? (/^https?:\/\//i.test(file) ? file : import.meta.env.BASE_URL + file.replace(/^\/+/, '')) : null
 
-  return <article className="document-card">
+  return <ScrollReveal as="article" className="document-card">
     <div className="document-card-top">
       <span className="document-icon" aria-hidden="true"><FiFileText /></span>
       <span className="document-badge">{badge || 'PDF'}</span>
@@ -29,5 +30,5 @@ export default function DocumentCard({ title, description, badge, file, text, re
     {viewerOpen && <Suspense fallback={<p role="status">{text.pdfLoading}</p>}>
       <PdfViewer title={title} file={url} text={text} onClose={() => setViewerOpen(false)} />
     </Suspense>}
-  </article>
+  </ScrollReveal>
 }

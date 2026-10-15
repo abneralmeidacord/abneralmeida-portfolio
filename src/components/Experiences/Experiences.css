@@ -67,12 +67,18 @@
 
     .experience-list {
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
         gap: 30px;
     }
 
     .experience-total {
         margin-bottom: 22px;
+    }
+
+    .experience-item {
+        min-width: 0;
+        max-width: 100%;
     }
 }
 

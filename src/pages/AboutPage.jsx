@@ -4,7 +4,7 @@ import Resume from '../components/Resume/Resume.jsx'
 
 export default function AboutPage({ text, language }) {
   return <>
-    <About text={text} showTools={false} />
+    <About text={text} showTools={false} expanded />
     <Resume text={text} language={language} />
     <Recommendations text={text} language={language} />
   </>

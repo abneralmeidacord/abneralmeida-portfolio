@@ -69,7 +69,7 @@
     font-size: 13px;
 }
 
-.document-pending > span {
+.document-pending>span {
     color: var(--color-primary);
     font-weight: 700;
 }

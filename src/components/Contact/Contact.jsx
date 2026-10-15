@@ -2,6 +2,8 @@ import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import SocialLinks from '../SocialLinks/SocialLinks.jsx'
 import contactPhoto from '../../assets/images/abner-contact.png'
+import { profile } from '../../data/profile.js'
+import ScrollReveal from '../Motion/ScrollReveal.jsx'
 import './Contact.css'
 export default function Contact({ text }) {
   const [status, setStatus] = useState('idle')
@@ -10,9 +12,18 @@ export default function Contact({ text }) {
     event.preventDefault()
     if (!configured) { setStatus('unconfigured'); return }
     const form = event.currentTarget
+    const fields = new FormData(form)
     setStatus('sending')
     try {
-      await emailjs.sendForm(import.meta.env.VITE_EMAILJS_SERVICE_ID, import.meta.env.VITE_EMAILJS_TEMPLATE_ID, form, { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY })
+      await emailjs.send(import.meta.env.VITE_EMAILJS_SERVICE_ID, import.meta.env.VITE_EMAILJS_TEMPLATE_ID, {
+        to_email: profile.email,
+        to_name: profile.name,
+        from_name: fields.get('from_name').trim(),
+        from_email: fields.get('from_email').trim(),
+        reply_to: fields.get('from_email').trim(),
+        subject: fields.get('subject').trim() || text.contactDefaultSubject,
+        message: fields.get('message').trim(),
+      }, { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY })
       setStatus('sent')
       form.reset()
     } catch { setStatus('error') }
@@ -20,7 +31,7 @@ export default function Contact({ text }) {
   const messages = { sent: text.sent, error: text.error, unconfigured: text.notConfigured }
   return <section id="contato" className="section container contact">
     <div className="contact-main">
-      <div className="contact-intro">
+      <ScrollReveal direction="left" className="contact-intro">
         <h2>{text.contactHeading}</h2><p className="contact-signature">Abner Almeida</p>
         <div className="contact-details">
           <SocialLinks />
@@ -41,8 +52,8 @@ export default function Contact({ text }) {
             </form>
           </div>
         </div>
-      </div>
-      <img className="contact-photo" src={contactPhoto} alt="Abner Almeida em uma viagem" loading="lazy" width="600" height="800" />
+      </ScrollReveal>
+      <ScrollReveal as="img" direction="right" className="contact-photo" src={contactPhoto} alt="Abner Almeida em uma viagem" loading="lazy" width="600" height="800" />
     </div>
   </section>
 }
