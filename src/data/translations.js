@@ -7,6 +7,8 @@ export const translations = {
     contactNav: "Vamos conversar",
     menu: "Abrir menu",
     closeMenu: "Fechar menu",
+    activateDarkTheme: "Ativar modo escuro",
+    activateLightTheme: "Ativar modo claro",
     greeting: "Olá, eu sou",
     role: "Estudante de Engenharia de Software",
     about:
@@ -139,6 +141,8 @@ export const translations = {
     contactNav: "Let’s talk",
     menu: "Open menu",
     closeMenu: "Close menu",
+    activateDarkTheme: "Switch to dark mode",
+    activateLightTheme: "Switch to light mode",
     greeting: "Hello, I’m",
     role: "Software engineering undergraduate student",
     about:

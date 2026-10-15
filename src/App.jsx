@@ -9,6 +9,8 @@ import SkillsPage from './pages/SkillsPage.jsx'
 import ExperiencesPage from './pages/ExperiencesPage.jsx'
 import usePageNavigation from './hooks/usePageNavigation.js'
 import Footer from './components/Footer/Footer.jsx'
+import { ThemeContext } from './contexts/ThemeContext.js'
+import useTheme from './hooks/useTheme.js'
 import { translations } from './data/translations.js'
 import './App.css'
 import './components/Motion/Motion.css'
@@ -44,6 +46,7 @@ function PageShell({ route, text, language, setLanguage }) {
 }
 
 export default function App() {
+  const theme = useTheme()
   const [language, setLanguage] = useState('pt')
   const text = translations[language]
   const route = usePageNavigation()
@@ -54,7 +57,9 @@ export default function App() {
   }, [route.page, text, language])
   return (
     <MotionConfig reducedMotion="user">
-      <PageShell key={route.page} route={route} text={text} language={language} setLanguage={setLanguage} />
+      <ThemeContext.Provider value={theme}>
+        <PageShell key={route.page} route={route} text={text} language={language} setLanguage={setLanguage} />
+      </ThemeContext.Provider>
     </MotionConfig>
   )
 }

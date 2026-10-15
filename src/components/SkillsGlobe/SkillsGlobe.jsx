@@ -1,4 +1,5 @@
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { ThemeContext } from '../../contexts/ThemeContext.js'
 import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, OrbitControls } from "@react-three/drei";
@@ -126,17 +127,19 @@ class GlobeBoundary extends React.Component {
 }
 
 export default function SkillsGlobe({ skills, hint, pauseLabel, resumeLabel, unavailableLabel }) {
+  const { theme } = useContext(ThemeContext)
   const container = useRef(null);
   const items = useRef([]);
   const dragStart = useRef(null);
-  const [colors] = useState(() => ({
+  const colors = useMemo(() => ({
     accent: readToken(document.documentElement, "--color-primary", ""),
     bg: readToken(document.documentElement, "--color-surface", ""),
-  }));
+    light: theme !== 'dark',
+  }), [theme]);
   const [visible, setVisible] = useState(true);
   const [mounted, setMounted] = useState(true);
   const [motion, setMotion] = useState(() => !prefersReducedMotion());
-  const light = true;
+  const light = colors.light;
 
   useEffect(() => {
     const el = container.current;

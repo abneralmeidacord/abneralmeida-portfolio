@@ -1,4 +1,5 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useContext, useRef, useState } from 'react'
+import { ThemeContext } from '../../contexts/ThemeContext.js'
 import emailjs from '@emailjs/browser'
 import SocialLinks from '../SocialLinks/SocialLinks.jsx'
 import contactPhoto from '../../assets/images/abner-contact.png'
@@ -7,6 +8,7 @@ import Reveal from '../Motion/Reveal.jsx'
 import Recaptcha from './Recaptcha.jsx'
 import './Contact.css'
 export default function Contact({ text, language }) {
+  const { theme } = useContext(ThemeContext)
   const [status, setStatus] = useState('idle')
   const captchaRef = useRef(null)
   const sendingRef = useRef(false)
@@ -60,7 +62,7 @@ export default function Contact({ text, language }) {
               <input id="contact-subject" name="subject" placeholder={text.contactSubject} maxLength={150} />
               <label className="visually-hidden" htmlFor="contact-message">{text.contactMessage}</label>
               <textarea id="contact-message" name="message" placeholder={text.contactMessage} required minLength={10} maxLength={3000} rows={5} />
-              {captchaKey ? <Recaptcha key={language} ref={captchaRef} siteKey={captchaKey} language={language} text={text} onVerified={onVerified} /> : <p className="form-note" role="status">{text.captchaUnavailable}</p>}
+              {captchaKey ? <Recaptcha key={`${language}-${theme}`} ref={captchaRef} siteKey={captchaKey} language={language} theme={theme} text={text} onVerified={onVerified} /> : <p className="form-note" role="status">{text.captchaUnavailable}</p>}
               <button className="button" disabled={status === 'sending' || !configured || !captchaKey}>{status === 'sending' ? text.sending : text.send}</button>
               {!configured && status !== 'unconfigured' && <p className="form-note">{text.notConfigured}</p>}
               <p className={'form-status ' + (status === 'error' ? 'form-error' : '')} role="status" aria-live="polite">{messages[status] || ''}</p>

@@ -20,7 +20,7 @@
     display: inline-flex;
     padding: 13px;
     font-size: 26px;
-    color: var(--color-on-card);
+    color: var(--color-on-primary);
     background: var(--color-primary);
     border-radius: 12px;
 }

@@ -1,5 +1,6 @@
 /* Cores e fontes compartilhadas. Altere aqui para atualizar o site inteiro. */
 :root {
+  color-scheme: light;
   --color-background: #fffcf5;
   --color-primary: #0d5850;
   --color-primary-hover: #03463d;
@@ -7,6 +8,7 @@
   --color-muted: #626d69;
   --color-card: #525e5d;
   --color-on-card: #fffcf5;
+  --color-on-primary: #fffcf5;
   --color-border: #b0b0b0;
   --color-button: #05534a;
   --color-button-end: #fffcf5;
@@ -46,4 +48,42 @@
   --radius-card: 14px;
   --shadow-card: 0 5px 18px var(--color-shadow);
   --content-width: 1120px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: #101b17;
+  --color-primary: #83d5b6;
+  --color-primary-hover: #a3e6cb;
+  --color-text: #edf3ec;
+  --color-muted: #adbbb1;
+  --color-card: #263b32;
+  --color-on-card: #edf3ec;
+  --color-on-primary: #10271d;
+  --color-border: #40584a;
+  --color-button: #83d5b6;
+  --color-surface: #192b22;
+  --color-error: #ffa6ac;
+  --color-shadow: #00000045;
+  --color-html: #ff9476;
+  --color-css: #78b8ef;
+  --color-javascript: #e9d55b;
+  --color-react: #70d7f6;
+  --color-typescript: #81b8ee;
+  --color-figma: #c294ff;
+  --color-python: #85bbdf;
+  --color-bootstrap: #b299e5;
+  --color-java: #f2a76b;
+  --color-git: #f88e78;
+  --color-docker: #7db6ff;
+  --color-postman: #ff9877;
+  --color-insomnia: #b997f4;
+  --color-miro: #efda74;
+  --color-clickup: #afa2ff;
+  --color-n8n: #f78fa1;
+  --color-make: #d2a4ff;
+  --color-netbeans: #79b8ee;
+  --color-styled-components: #eea2c7;
+  --color-node: #8bc87c;
+  --color-affinity: #edf3ec;
 }

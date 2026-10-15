@@ -29,6 +29,10 @@
     transform: translateY(-4px);
 }
 
+:root[data-theme="dark"] .social-links a[aria-label="GitHub"] img {
+    filter: invert(1);
+}
+
 @media (max-width: 540px) {
     .social-links {
         --social-icon-size: 48px;

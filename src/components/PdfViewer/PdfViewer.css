@@ -70,7 +70,7 @@
 
 .pdf-viewer-close:hover {
     background: var(--color-primary);
-    color: var(--color-on-card);
+    color: var(--color-on-primary);
 }
 
 .pdf-viewer-document {
@@ -136,7 +136,7 @@
 
 .pdf-viewer-controls button:hover:not(:disabled) {
     background: var(--color-primary);
-    color: var(--color-on-card);
+    color: var(--color-on-primary);
 }
 
 .pdf-viewer-message {

@@ -96,6 +96,12 @@
     min-height: 115px;
 }
 
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--color-muted);
+    opacity: 1;
+}
+
 .contact-form .button {
     background: var(--color-button);
     border-radius: 4px;

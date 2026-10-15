@@ -69,6 +69,7 @@ A aplicação foi construída com React e Vite, com componentes em JavaScript/JS
 | Envio | Integração com EmailJS, validação dos campos, estados de envio/sucesso/erro e reCAPTCHA v2 horizontal |
 | Navegação e acessibilidade | Menu mobile, seletor PT/EN, link para pular ao conteúdo e respeito à preferência de movimento reduzido |
 | Animações | Loading por página, digitação na apresentação, entrada de textos e cards, diferenciais de baixo para cima e timeline progressiva |
+| Temas | Modo claro/escuro pelo botão de sol/lua no cabeçalho; preferência salva no navegador e tema do sistema no primeiro acesso |
 
 ## Tecnologias utilizadas
 
@@ -287,9 +288,9 @@ abneralmeida-portfolio/
 │   │   ├── SkillsGlobe/
 │   │   ├── SkillsList/
 │   │   └── SocialLinks/
-│   ├── contexts/PageReadyContext.js
+│   ├── contexts/                   # Contextos de carregamento e tema
 │   ├── data/                       # Perfil, projetos, habilidades e traduções
-│   ├── hooks/usePageNavigation.js
+│   ├── hooks/                      # Navegação e preferência de tema
 │   ├── pages/                      # Home, About, Skills e Experiences
 │   ├── styles/tokens.css
 │   ├── utils/                      # Cálculo de experiência e testes
@@ -332,7 +333,7 @@ As imagens abaixo mostram a implementação executada localmente, em contraste c
 | Projetos | `#/experiencias/projetos` | Acesso direto à timeline |
 | Contato | `#/contato` | Ícones e formulário na página inicial |
 
-Use **PT/EN** para trocar o idioma. Em Sobre mim, abra o currículo ou a recomendação para usar o visualizador interno; o currículo acompanha o idioma selecionado. Em Habilidades, use os botões de visualização e os filtros da lista. Na timeline, os links levam aos repositórios e às demonstrações disponíveis. No formulário, preencha os campos obrigatórios e resolva o reCAPTCHA antes de enviar.
+Use **PT/EN** para trocar o idioma e o botão de **sol/lua** para alternar o tema. A escolha do tema é salva no navegador; sem uma escolha manual, o site acompanha o sistema. Em Sobre mim, abra o currículo ou a recomendação para usar o visualizador interno; o currículo acompanha o idioma selecionado. Em Habilidades, use os botões de visualização e os filtros da lista. Na timeline, os links levam aos repositórios e às demonstrações disponíveis. No formulário, preencha os campos obrigatórios e resolva o reCAPTCHA antes de enviar.
 
 ### Como atualizar o conteúdo
 

@@ -35,7 +35,7 @@ function loadRecaptcha() {
   return apiPromise
 }
 
-export default function Recaptcha({ ref, siteKey, language, text, onVerified }) {
+export default function Recaptcha({ ref, siteKey, language, theme, text, onVerified }) {
   const frameRef = useRef(null)
   const hostRef = useRef(null)
   const widgetRef = useRef(null)
@@ -76,6 +76,7 @@ export default function Recaptcha({ ref, siteKey, language, text, onVerified }) 
       widgetRef.current = api.render(container, {
         sitekey: siteKey,
         hl: language === 'pt' ? 'pt-BR' : 'en',
+        theme,
         size: 'normal',
         callback: token => {
           if (disposed) return
@@ -105,7 +106,7 @@ export default function Recaptcha({ ref, siteKey, language, text, onVerified }) 
       }
       container.remove()
     }
-  }, [siteKey, language, onVerified, attempt])
+  }, [siteKey, language, theme, onVerified, attempt])
 
   return <div className="contact-captcha" role="group" aria-label={text.captchaLabel}>
     <div className="captcha-frame" ref={frameRef} style={{ height: 78 * scale }}>
