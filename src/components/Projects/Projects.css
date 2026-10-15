@@ -63,24 +63,26 @@
 .timeline-track,
 .timeline-progress {
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    pointer-events: none;
+    inset: 0;
+    background: var(--color-primary);
+    transform-origin: top;
 }
 
-.timeline-track { background: var(--color-border); opacity: .4; }
-.timeline-progress { background: var(--color-primary); transform-origin: top; }
+.timeline-track { opacity: .15; }
+.timeline-progress { will-change: transform; }
+
 .timeline-traveler {
     position: absolute;
-    left: -5px;
-    width: 12px;
-    height: 12px;
+    top: -4px;
+    left: -3px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--color-primary);
-    box-shadow: 0 0 0 5px var(--color-shadow);
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 1;
+    will-change: transform;
+}
+
+@media print {
+    .timeline-progress { transform: none !important; }
+    .timeline-traveler { display: none; }
 }

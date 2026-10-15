@@ -3,7 +3,7 @@ import emailjs from '@emailjs/browser'
 import SocialLinks from '../SocialLinks/SocialLinks.jsx'
 import contactPhoto from '../../assets/images/abner-contact.png'
 import { profile } from '../../data/profile.js'
-import ScrollReveal from '../Motion/ScrollReveal.jsx'
+import Reveal from '../Motion/Reveal.jsx'
 import './Contact.css'
 export default function Contact({ text }) {
   const [status, setStatus] = useState('idle')
@@ -31,7 +31,7 @@ export default function Contact({ text }) {
   const messages = { sent: text.sent, error: text.error, unconfigured: text.notConfigured }
   return <section id="contato" className="section container contact">
     <div className="contact-main">
-      <ScrollReveal direction="left" className="contact-intro">
+      <Reveal className="contact-intro">
         <h2>{text.contactHeading}</h2><p className="contact-signature">Abner Almeida</p>
         <div className="contact-details">
           <SocialLinks />
@@ -52,8 +52,8 @@ export default function Contact({ text }) {
             </form>
           </div>
         </div>
-      </ScrollReveal>
-      <ScrollReveal as="img" direction="right" className="contact-photo" src={contactPhoto} alt="Abner Almeida em uma viagem" loading="lazy" width="600" height="800" />
+      </Reveal>
+      <Reveal as="img" className="contact-photo" delay={0.1} src={contactPhoto} alt="Abner Almeida em uma viagem" loading="lazy" width="600" height="800" />
     </div>
   </section>
 }

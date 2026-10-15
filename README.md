@@ -21,10 +21,10 @@ A interface local está implementada. O envio de e-mail depende da configuraçã
 - Página inicial com a visão geral, mais páginas próprias de Sobre Mim, Habilidades e Experiências.
 - Página Sobre Mim com currículo no idioma selecionado (PT/EN) e a carta de recomendação de Gabriel Rangel em PDF, com visualizador dentro do site e download.
 - Página Habilidades com o globo, linguagens, ferramentas, idiomas e diferenciais.
-- Alternância entre globo com cards (padrão) e lista de habilidades com filtros por categoria e contagens, em PT/EN.
-- Motion: loading inicial com spinner e barra ligados aos recursos da página, apresentação digitada, blocos que convergem e esmaecem com o scroll, diferenciais com fade-in de baixo para cima e timeline com linha e marcadores animados. A preferência de movimento reduzido é respeitada.
-- Sobre Mim com um parágrafo sobre a trajetória descrita no currículo; no celular, retrato circular antes do texto.
-- Monitoria de Desenvolvimento de Interfaces Web e Webtech Network na PUC Minas desde setembro de 2026; imagens dos projetos preenchendo os cards com `object-fit: fill`.
+- Alternância entre globo com cards (padrão) e lista com 32 habilidades, filtros por categoria e contagens, em PT/EN.
+- Motion: loading com spinner e barra no primeiro acesso e a cada troca de página. Textos e cards aparecem uma vez com fade-in e deslocamento curto; a apresentação tem digitação após a saída do loading, os diferenciais surgem de baixo para cima e a timeline avança com um marcador durante a rolagem. A preferência de movimento reduzido é respeitada.
+- Sobre Mim com um parágrafo sobre a trajetória descrita no currículo, seta para acessar os documentos abaixo e, no celular, retrato circular antes do texto.
+- Monitoria de Desenvolvimento de Interfaces Web e Webtech Network na PUC Minas desde setembro de 2026; imagens dos projetos exibidas inteiras, mantendo sua proporção original.
 - Página Experiências com o card profissional e a timeline dos projetos.
 - Menu com Sobre Mim, Habilidades e Experiências; projetos junto ao cartão profissional na página Experiências; contato na página inicial.
 - Apresentação e conteúdo em português e inglês, alternados pelo seletor PT/EN.
@@ -33,7 +33,7 @@ A interface local está implementada. O envio de e-mail depende da configuraçã
 - Respeito à preferência de redução de movimento; alternativa textual em caso de indisponibilidade do WebGL.
 - Experiências com instituição, cargo, período e descrição.
 - Timeline de projetos gerada a partir de uma lista e ordenada do mais antigo ao mais recente.
-- Cards com descrição, tecnologias, imagem e link do GitHub.
+- Cards com descrição, tecnologias, imagem e link do GitHub. Casa Profética AS ONE inclui a imagem enviada pelo autor, React/Next.js/MDX e acesso ao [site publicado](https://casaprofeticaasone.com/).
 - Links de e-mail, LinkedIn, Instagram, GitHub e WhatsApp, com os ícones originais exportados do Figma.
 - WhatsApp com a mensagem: “Olá! Vim pelo seu portfólio e gostaria de saber mais sobre você! 😉”
 - Formulário com nome, e-mail, assunto opcional e mensagem.
@@ -62,7 +62,7 @@ As seis imagens abaixo foram exportadas do arquivo Figma. São referências de d
 
 A implementação usa o frame principal como referência: seis cards de habilidades com o card de experiência ao lado, logos secundários, diferenciais e contato com foto grande à direita. O formulário foi movido para junto dos ícones, à esquerda da foto, conforme a revisão solicitada. Os textos do protótipo têm tradução para português. Fotos, logos de linguagens e ícones de redes sociais foram exportados das camadas do Figma para arquivos locais, sem substituí-los por ícones de biblioteca.
 
-O header e a timeline cronológica foram mantidos conforme solicitado. O globo fica na página Habilidades, junto aos cards. Os cargos informados pelo autor foram incluídos no card de experiência; o total de 2 anos e 11 meses reproduz o protótipo e não é calculado automaticamente. O formulário de contato fica ao lado dos ícones, na área à esquerda da foto; no celular, os elementos se empilham. A frase “Vamos criar algo juntos?” e o rodapé solicitado pelo autor foram preservados. Os logos abaixo da apresentação foram reduzidos, e o trio voltou à composição com uma leve inclinação.
+O header e a timeline cronológica foram mantidos conforme solicitado. O globo fica na página Habilidades, junto aos cards. Os cargos informados pelo autor foram incluídos no card de experiência; o total é calculado em meses a partir das experiências cadastradas, contando vínculos simultâneos uma única vez. O formulário de contato fica ao lado dos ícones, na área à esquerda da foto; no celular, os elementos se empilham. A frase “Vamos criar algo juntos?” e o rodapé solicitado pelo autor foram preservados. Os logos abaixo da apresentação foram reduzidos, e o trio voltou à composição com uma leve inclinação.
 
 ## Tecnologias e dependências
 
@@ -71,7 +71,7 @@ As versões resolvidas estão em `package-lock.json`. Use `npm ci` para reproduz
 | Dependência | Finalidade |
 | --- | --- |
 | React / React DOM | Componentes, estados e renderização da interface |
-| Motion | Animações de carregamento, texto e scroll |
+| Motion | Loading por página, digitação, entradas ao aparecer na tela e timeline progressiva |
 | Vite / plugin React | Servidor de desenvolvimento e build de produção |
 | JavaScript / JSX | Lógica e componentes |
 | CSS | Layout, responsividade, fontes e variáveis de cores |
@@ -121,6 +121,7 @@ Abra o endereço indicado no terminal. Normalmente é `http://localhost:5173`; s
 | --- | --- |
 | `npm run dev` | Abre o servidor local e atualiza a página ao salvar arquivos |
 | `npm run lint` | Verifica o código JavaScript/JSX |
+| `npm test` | Verifica a contagem de experiência e sua tradução |
 | `npm run build` | Gera o site de produção em `dist/` |
 | `npm run preview` | Serve o build para conferência local |
 
@@ -132,7 +133,7 @@ O Vite cuida do servidor e da compilação. A programação dos componentes cont
 - **Importação das fontes e estilos gerais:** `src/index.css`.
 - **Contato e WhatsApp:** `src/data/profile.js`.
 - **Projetos, datas e tecnologias:** `src/data/projects.js`.
-- **Experiências:** `src/data/experiences.js`.
+- **Experiências:** `src/data/experiences.js`. Informe `startDate` no formato `AAAA-MM`; omita `endDate` enquanto o vínculo estiver ativo. Para encerrar, informe `endDate` no mesmo formato. Quando os meses de início/fim forem desconhecidos, use `durationMonths` com a duração informada pelo autor.
 - **Habilidades do globo:** `src/data/skills.js`.
 - **Ícones originais do Figma:** `src/assets/icons/`, importados em `src/data/designAssets.js`.
 - **Textos PT/EN:** `src/data/translations.js`.
@@ -140,9 +141,15 @@ O Vite cuida do servidor e da compilação. A programação dos componentes cont
 - **Currículos PT/EN:** `src/data/resumes.js` e PDFs em `public/resumes/`. Veja [como adicionar os currículos](docs/recommendations.md).
 - **Aparência de uma seção:** o arquivo CSS do componente correspondente.
 
+As entradas usam `useInView` e animam apenas `opacity` e `transform`, com distância de 18 px e duração de 0,58 s. Elas não voltam a esconder conteúdo ao sair da tela. Só a timeline acompanha o scroll: `useScroll` + `useSpring` controlam a linha, o marcador e a escala dos pontos. As alturas são medidas por `ResizeObserver` ao mudar o layout; não há `setState` por frame de scroll ou digitação. A preferência de movimento reduzido mostra o conteúdo completo e mantém a timeline estática.
+
+O contador usa meses completos entre os meses cadastrados e o mês atual no fuso de São Paulo, descontando a sobreposição dos vínculos com datas. Os três vínculos antigos conservam suas durações informadas (20, 5 e 10 meses), pois só há anos de início/fim. Os dois vínculos na PUC começaram em setembro de 2026 e contam como um único período no total. Em outubro de 2026, o total é 36 meses (3 anos). A contagem é atualizada ao abrir a página e a cada hora enquanto ela estiver aberta.
+
 Cada componente tem um arquivo `.jsx` com sua lógica e marcação e um arquivo `.css` com seus estilos. Não há necessidade de criar um terceiro arquivo JavaScript para componentes pequenos.
 
 ## Configuração do EmailJS
+
+Os [modelos HTML de contato e resposta automática](docs/emailjs/README.md) seguem a paleta do site e já usam as variáveis enviadas pelo formulário. Veja também a [prévia dos dois e-mails](docs/emailjs/preview.html), disponível pelo servidor local.
 
 1. Crie um serviço de e-mail e um template na sua conta EmailJS.
 2. Configure o destinatário fixo como `abnersolk@gmail.com`.
@@ -196,7 +203,7 @@ abneralmeida-portfolio/
 
 Consulte [o checklist das sprints](docs/entregas.md). Validação realizada: lint e build aprovados; versão de produção conferida em desktop e em 390 × 844 px; seis imagens carregadas; timeline cronológica; troca PT/EN; menu mobile; arrasto e pausa do globo; validação de e-mail inválido e aviso de envio não configurado. O recebimento real de e-mail ainda não foi testado.
 
-Os previews de StarWars e COBRINHA.ZIP são as capas usadas no Figma. Para a S03, acrescente capturas ou GIFs desses projetos realmente em execução. Os projetos aceitam a propriedade opcional `demo` para uma demonstração externa.
+Os previews de StarWars e COBRINHA.ZIP são as capas usadas no Figma. Para a S03, acrescente capturas ou GIFs desses projetos realmente em execução. Os projetos aceitam `demo` para uma demonstração externa ou `website` para um site publicado. Use `imageWidth` e `imageHeight` quando o preview tiver dimensões diferentes das imagens padrão.
 
 As datas dos projetos e os períodos profissionais foram transcritos do protótipo. Os cargos foram informados pelo autor; as descrições são breves e podem ser enriquecidas com atividades reais. A stack do Vclean foi conferida no repositório, que usa Expo, apesar de a capa mostrar uma landing page.
 
@@ -209,6 +216,8 @@ Pendente, conforme o escopo combinado. Para publicar na Vercel, use o preset Vit
 Depois, acrescente o endereço publicado neste README e confirme o envio do formulário no site online. O repositório Git local foi inicializado. A criação do repositório remoto e a publicação no GitHub devem ser concluídas antes da entrega.
 
 ## Autor e créditos
+
+Os SVGs de Canva e Affinity foram vetorizados a partir das imagens fornecidas pelo autor, com cores sólidas. O ursinho do Zustand foi adaptado da coleção [Devicon](https://github.com/devicons/devicon/blob/master/icons/zustand/zustand-plain.svg), em marrom, com a [licença MIT preservada](docs/references/devicon-LICENSE.txt).
 
 A lista de habilidades e os filtros foram adaptados do [SkillsSection de João Paulo Aramuni](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web/tree/main/PROJETOS/React/SkillsGlobe/src/components/SkillsSection), mantendo os dados deste portfólio e seus estilos. A licença MIT está em [aramuni-skills-section-LICENSE.txt](docs/references/aramuni-skills-section-LICENSE.txt).
 

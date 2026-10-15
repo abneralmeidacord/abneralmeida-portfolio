@@ -2,8 +2,8 @@ import starwarsImage from "../assets/images/starwars.png";
 import vcleanImage from "../assets/images/vclean.png";
 import overwatchImage from "../assets/images/overwatch.png";
 import snakeImage from "../assets/images/snake.png";
+import asoneImage from "../assets/images/casa-profetica-as-one.png";
 
-// Datas do Figma. Tecnologias conferidas nos repositórios enviados.
 export const projects = [
   {
     id: "starwars",
@@ -61,6 +61,23 @@ export const projects = [
     description: {
       pt: "Jogo da cobrinha desenvolvido em grupo para Introdução a Algoritmos. Inclui pontuação, ranking, recordes, pausa e efeitos sonoros.",
       en: "A snake game developed as a group project for Introduction to Algorithms, featuring scores, rankings, records, pause and sound effects.",
+    },
+  },
+  {
+    id: "asone",
+    name: "Casa Profética AS ONE",
+    type: 2,
+    date: "2026-10",
+    period: "10 / 2026",
+    image: asoneImage,
+    imageWidth: 1842,
+    imageHeight: 991,
+    repository: "https://github.com/abneralmeidacord/casaprofetica-asone-site",
+    website: "https://casaprofeticaasone.com/",
+    technologies: ["React", "Next.js", "JavaScript", "MDX", "CSS"],
+    description: {
+      pt: "Site institucional da Casa Profética AS ONE, com apresentação da igreja, informações para visitantes e páginas de ofertas e Connects. Conteúdo organizado em MDX.",
+      en: "A website for Casa Profética AS ONE with church information, visitor guidance, and giving and Connects pages. Content is organized in MDX.",
     },
   },
 ];

@@ -55,6 +55,23 @@
     align-self: start;
 }
 
+.about-scroll-cue {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    margin: 26px auto 0;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    color: var(--color-primary);
+    background: transparent;
+    font-size: 23px;
+}
+
+.about-scroll-cue:hover {
+    background: var(--color-surface);
+}
+
 .about-tools {
     display: flex;
     align-items: center;

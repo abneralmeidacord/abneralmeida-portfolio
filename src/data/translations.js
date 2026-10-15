@@ -15,6 +15,7 @@ export const translations = {
     aboutExperience:
       "Na SevenApps, contribuí com o desenvolvimento front-end de aplicativos e sites, incluindo o BestBarbers. Também criei uma landing page em React para a Vclean Higienização como freelancer e, na Grownexis, trabalhei com ferramentas de inteligência artificial para fortalecer a presença digital de clientes.",
     aboutButton: "Sobre mim",
+    aboutMore: "Ver currículo e recomendações abaixo",
     skillsNote: "Minhas principais habilidades estão aqui!",
     skillsMore: "Não se preocupe, tem mais logo abaixo :)",
     skillsTitle: "Minhas habilidades e experiências",
@@ -28,7 +29,7 @@ export const translations = {
     skillsCountLabelSingular: "habilidade nesta seleção",
     skillCategories: {
       all: "Todas",
-      languages: "Linguagens",
+      languages: "Linguagens e formatos",
       frameworks: "Frameworks e bibliotecas",
       design: "Design",
       tools: "Ferramentas",
@@ -91,8 +92,6 @@ export const translations = {
     bigThree: "O grande trio! JavaScript + HTML + CSS",
     experiencesTitle: "Experiência profissional",
     workingFor: "Trabalho há",
-    years: "anos",
-    elevenMonths: "11 meses",
     experiencesIntro:
       "Experiências e projetos que fazem parte da minha formação.",
     experienceNote:
@@ -103,6 +102,7 @@ export const translations = {
       "Do primeiro projeto aos desafios mais recentes. Cada entrega, um novo aprendizado.",
     repository: "Ver repositório",
     demo: "Ver demonstração",
+    visitWebsite: "Ver site",
     projectType: ["Evento técnico", "Freelancer", "Projeto acadêmico"],
     contactEyebrow: "Uma boa conversa pode ser o começo",
     contactTitle: "Vamos criar algo juntos?",
@@ -140,6 +140,7 @@ export const translations = {
     aboutExperience:
       "At SevenApps, I contributed to front-end development for apps and websites, including BestBarbers. I also built a React landing page for Vclean Higienização as a freelancer and, at Grownexis, worked with AI tools to strengthen clients’ digital presence.",
     aboutButton: "About me",
+    aboutMore: "View résumé and recommendations below",
     skillsNote: "My main abilities are here!",
     skillsMore: "Don’t worry there’s more down below :)",
     skillsTitle: "My Skills & Work Experience",
@@ -153,7 +154,7 @@ export const translations = {
     skillsCountLabelSingular: "skill in this selection",
     skillCategories: {
       all: "All",
-      languages: "Languages",
+      languages: "Languages and formats",
       frameworks: "Frameworks and libraries",
       design: "Design",
       tools: "Tools",
@@ -210,8 +211,6 @@ export const translations = {
     bigThree: "The big three! Javascript + HTML + CSS",
     experiencesTitle: "Work experience",
     workingFor: "I’ve been working for",
-    years: "years",
-    elevenMonths: "11 months",
     experiencesIntro: "Experiences and projects that are part of my education.",
     experienceNote:
       "Organizations and periods from the prototype. Activity details will be completed.",
@@ -221,6 +220,7 @@ export const translations = {
       "From my first projects to more recent challenges. Every delivery, something new to learn.",
     repository: "View repository",
     demo: "View demonstration",
+    visitWebsite: "Visit website",
     projectType: ["Technical event", "Freelance", "University project"],
     contactEyebrow: "Every idea begins with a conversation",
     contactTitle: "Let’s build something together?",

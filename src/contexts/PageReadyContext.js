@@ -1,3 +1,3 @@
 import { createContext } from 'react'
 
-export const PageReadyContext = createContext(false)
+export const PageReadyContext = createContext(true)

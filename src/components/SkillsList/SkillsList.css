@@ -68,6 +68,8 @@
 .skills-list-icon {
     flex-shrink: 0;
     font-size: 32px;
+    width: 1em;
+    height: 1em;
     color: var(--skill);
 }
 

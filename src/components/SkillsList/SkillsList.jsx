@@ -2,7 +2,8 @@
 // Licença: docs/references/aramuni-skills-section-LICENSE.txt.
 import { useState } from 'react'
 import { FiArrowUpRight } from 'react-icons/fi'
-import ScrollReveal from '../Motion/ScrollReveal.jsx'
+import Reveal from '../Motion/Reveal.jsx'
+import SkillIcon from '../SkillIcon/SkillIcon.jsx'
 import './SkillsList.css'
 
 export default function SkillsList({ skills, text }) {
@@ -19,14 +20,13 @@ export default function SkillsList({ skills, text }) {
     <p className="skills-list-count" role="status">{filtered.length} {filtered.length === 1 ? text.skillsCountLabelSingular : text.skillsCountLabel}</p>
     <ul className="skills-detail-list" aria-label={text.skillsListView}>
       {filtered.map(skill => {
-        const Icon = skill.icon
-        return <ScrollReveal as="li" key={skill.name}>
+        return <Reveal as="li" key={skill.name}>
           <a href={skill.link} target="_blank" rel="noopener noreferrer" style={{ '--skill': skill.color }}>
-            <Icon className="skills-list-icon" aria-hidden="true" />
+            <SkillIcon skill={skill} className="skills-list-icon" aria-hidden="true" />
             <span className="skills-list-name">{skill.name}<small>{text.skillCategories[skill.category]}</small></span>
             <FiArrowUpRight className="skills-list-arrow" aria-hidden="true" />
           </a>
-        </ScrollReveal>
+        </Reveal>
       })}
     </ul>
   </div>

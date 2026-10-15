@@ -4,7 +4,7 @@ export const experiences = [
     id: "sevenapps",
     company: "Sevenapps",
     period: "2022 — 2023",
-    duration: { pt: "1 ano e 8 meses", en: "1 year & 8 months" },
+    durationMonths: 20,
     role: { pt: "Menor aprendiz", en: "Apprentice" },
     description: {
       pt: "Início da minha trajetória profissional como menor aprendiz na Sevenapps.",
@@ -15,7 +15,7 @@ export const experiences = [
     id: "dentapp",
     company: "Dentapp",
     period: "2024 — 2025",
-    duration: { pt: "5 meses", en: "5 months" },
+    durationMonths: 5,
     role: { pt: "Desenvolvedor front-end", en: "Front-end developer" },
     description: {
       pt: "Atuação no desenvolvimento front-end na Dentapp.",
@@ -26,7 +26,7 @@ export const experiences = [
     id: "grownexis",
     company: "Grownexis",
     period: "2025 — 2026",
-    duration: { pt: "10 meses", en: "10 months" },
+    durationMonths: 10,
     role: { pt: "Líder de marketing", en: "Marketing head" },
     description: {
       pt: "Atuação na liderança de marketing na Grownexis.",
@@ -35,6 +35,7 @@ export const experiences = [
   },
   {
     id: "puc-minas-monitoria-diw",
+    startDate: "2026-09",
     company: "PUC Minas",
     period: { pt: "Set/2026 — Atual", en: "Sep/2026 — Present" },
     role: {
@@ -44,6 +45,7 @@ export const experiences = [
   },
   {
     id: "puc-minas-webtech",
+    startDate: "2026-09",
     company: "PUC Minas · Webtech Network",
     period: { pt: "Set/2026 — Atual", en: "Sep/2026 — Present" },
     role: { pt: "Desenvolvedor", en: "Developer" },

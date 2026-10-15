@@ -1,32 +1,27 @@
-import { useContext, useEffect, useMemo, useState } from 'react'
-import { animate, motion, useReducedMotion } from 'motion/react'
+import { useContext, useEffect } from 'react'
+import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 'motion/react'
 import { PageReadyContext } from '../../contexts/PageReadyContext.js'
 
 export default function Typewriter({ text, delay = 0 }) {
   const ready = useContext(PageReadyContext)
   const reducedMotion = useReducedMotion()
-  const characters = useMemo(() => Array.from(text), [text])
-  const [count, setCount] = useState(0)
-
+  const count = useMotionValue(0)
+  const output = useTransform(count, value => text.slice(0, Math.round(value)))
+  const caretDisplay = useTransform(count, value => value > 0 && Math.round(value) < text.length ? 'inline-block' : 'none')
   useEffect(() => {
     if (!ready || reducedMotion) return
-    const playback = animate(0, characters.length, {
-      duration: characters.length * 0.055,
-      delay: delay + 0.3,
-      ease: 'linear',
-      onUpdate: value => setCount(Math.floor(value)),
+    const controls = animate(count, text.length, {
+      duration: text.length * 0.055, delay: 0.05 + delay, ease: 'linear',
     })
-    return () => playback.stop()
-  }, [ready, reducedMotion, characters, delay])
+    return () => controls.stop()
+  }, [ready, reducedMotion, count, text, delay])
 
-  const finished = reducedMotion || count >= characters.length
+  if (reducedMotion) return text
   return <span className="typewriter">
     <span className="motion-sr-only">{text}</span>
     <span className="typewriter-reserve" aria-hidden="true">{text}</span>
     <span className="typewriter-output" aria-hidden="true">
-      {reducedMotion ? text : characters.slice(0, count).join('')}
-      {ready && count > 0 && !finished && <motion.span className="typewriter-caret"
-        animate={{ opacity: [1, 0] }} transition={{ duration: 0.45, repeat: Infinity }} />}
+      <motion.span>{output}</motion.span><motion.span className="typewriter-caret" style={{ display: caretDisplay }} />
     </span>
   </span>
 }

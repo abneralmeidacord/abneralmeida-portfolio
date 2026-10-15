@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "re
 import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, OrbitControls } from "@react-three/drei";
+import SkillIcon from '../SkillIcon/SkillIcon.jsx'
 import "./SkillsGlobe.css";
 
 function fibonacciSphere(n, radius) {
@@ -215,7 +216,6 @@ export default function SkillsGlobe({ skills, hint, pauseLabel, resumeLabel, una
 
         <ul className="skills-globe__layer">
           {skills.map((skill, i) => {
-            const Icon = skill.icon;
             return (
               <li key={skill.name} className="skills-globe__li">
                 <a
@@ -230,7 +230,7 @@ export default function SkillsGlobe({ skills, hint, pauseLabel, resumeLabel, una
                   draggable={false}
                   aria-label={skill.name}
                 >
-                  <Icon className="skills-globe__icon" aria-hidden="true" />
+                  <SkillIcon skill={skill} className="skills-globe__icon" aria-hidden="true" />
                   <span className="skills-globe__label">{skill.name}</span>
                 </a>
               </li>
