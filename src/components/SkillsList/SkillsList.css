@@ -94,9 +94,14 @@
 }
 
 @media (max-width: 900px) {
-    .skills-detail-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .skills-detail-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 540px) {
-    .skills-detail-list { grid-template-columns: 1fr; gap: 12px; }
+    .skills-detail-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
 }

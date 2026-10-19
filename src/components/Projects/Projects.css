@@ -47,9 +47,14 @@
         left: -23px;
     }
 
-    .timeline-item .timeline-segment { left: -18px; }
+    .timeline-item .timeline-segment {
+        left: -18px;
+    }
 }
-.project-timeline-shell { position: relative; }
+
+.project-timeline-shell {
+    position: relative;
+}
 
 .timeline-segment {
     position: absolute;
@@ -68,8 +73,13 @@
     transform-origin: top;
 }
 
-.timeline-track { opacity: .15; }
-.timeline-progress { will-change: transform; }
+.timeline-track {
+    opacity: .15;
+}
+
+.timeline-progress {
+    will-change: transform;
+}
 
 .timeline-traveler {
     position: absolute;
@@ -83,6 +93,11 @@
 }
 
 @media print {
-    .timeline-progress { transform: none !important; }
-    .timeline-traveler { display: none; }
+    .timeline-progress {
+        transform: none !important;
+    }
+
+    .timeline-traveler {
+        display: none;
+    }
 }

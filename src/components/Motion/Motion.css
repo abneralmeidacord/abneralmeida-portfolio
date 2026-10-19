@@ -11,27 +11,100 @@
     color: var(--color-primary);
 }
 
-.page-loader-logo { font-size: 36px; font-weight: 800; letter-spacing: -2px; }
-.page-loader-logo span { color: var(--color-muted); }
-.page-loader-spinner { width: 52px; height: 52px; }
-.page-loader p { font-size: 13px; color: var(--color-muted); }
-.page-loader-track { width: min(260px, 70vw); height: 3px; border-radius: 3px; overflow: hidden; background: var(--color-border); }
-.page-loader-progress { height: 100%; background: var(--color-primary); transform-origin: left; }
+.page-loader-logo {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
 
-.reveal:focus-within { opacity: 1 !important; transform: none !important; }
-.typewriter { display: inline-grid; max-width: 100%; vertical-align: baseline; }
-.typewriter-reserve, .typewriter-output { grid-area: 1 / 1; }
-.typewriter-reserve { visibility: hidden; }
-.typewriter-output { text-align: start; }
-.typewriter-caret { display: inline-block; height: .8em; width: 2px; margin-left: 2px; background: currentColor; }
-.motion-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.page-loader-logo span {
+    color: var(--color-muted);
+}
+
+.page-loader-spinner {
+    width: 52px;
+    height: 52px;
+}
+
+.page-loader p {
+    font-size: 13px;
+    color: var(--color-muted);
+}
+
+.page-loader-track {
+    width: min(260px, 70vw);
+    height: 3px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--color-border);
+}
+
+.page-loader-progress {
+    height: 100%;
+    background: var(--color-primary);
+    transform-origin: left;
+}
+
+.reveal:focus-within {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.typewriter {
+    display: inline-grid;
+    max-width: 100%;
+    vertical-align: baseline;
+}
+
+.typewriter-reserve,
+.typewriter-output {
+    grid-area: 1 / 1;
+}
+
+.typewriter-reserve {
+    visibility: hidden;
+}
+
+.typewriter-output {
+    text-align: start;
+}
+
+.typewriter-caret {
+    display: inline-block;
+    height: .8em;
+    width: 2px;
+    margin-left: 2px;
+    background: currentColor;
+}
+
+.motion-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
 
 @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1 !important; transform: none !important; }
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
 
 @media print {
-    .reveal { opacity: 1 !important; transform: none !important; }
-    .typewriter-reserve { visibility: visible; }
-    .typewriter-output, .page-loader { display: none; }
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .typewriter-reserve {
+        visibility: visible;
+    }
+
+    .typewriter-output,
+    .page-loader {
+        display: none;
+    }
 }
