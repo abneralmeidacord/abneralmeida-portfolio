@@ -44,6 +44,7 @@ export const projects = [
     image: overwatchImage,
     repository: "https://github.com/abneralmeidacord/trabalho-pratico-DIW-PUC",
     demo: "https://github.com/user-attachments/assets/df2a3258-fbd9-4d64-bfdb-178a8af98bfa",
+    website: "https://overwatch-wiki-diw-puc.onrender.com/",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "JSON Server"],
     description: {
       pt: "Wiki de heróis de Overwatch com cards dinâmicos, detalhes dos personagens, busca, cadastro, login e favoritos. Trabalho acadêmico de desenvolvimento web.",
