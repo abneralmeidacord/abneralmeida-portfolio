@@ -80,4 +80,20 @@ export const projects = [
       en: "A website for Casa Profética AS ONE with church information, visitor guidance, and giving and Connects pages. Content is organized in MDX.",
     },
   },
+  {
+    id: "pokedex",
+    name: "Pokédex",
+    type: 2,
+    date: "2026-10",
+    period: "10 / 2026",
+    image:
+      "https://raw.githubusercontent.com/abneralmeidacord/Pokedex-DIAW/main/public/assets/imgs/pokedex-closed.png",
+    repository: "https://github.com/abneralmeidacord/Pokedex-DIAW",
+    website: "https://pokedex-diaw.vercel.app/",
+    technologies: ["React", "TypeScript", "Vite", "CSS", "Motion"],
+    description: {
+      pt: "Pokédex interativa com 151 Pokémon, pesquisa por nome ou ID, filtros por tipo, fichas de atributos e consulta de treinadores e suas equipes. Projeto acadêmico desenvolvido para a disciplina de Desenvolvimento e Integração de Aplicações Web da PUC Minas.",
+      en: "An interactive Pokédex featuring 151 Pokémon, search by name or ID, type filters, detailed stats, and trainers and their teams. A university project built for the Web Application Development and Integration course at PUC Minas.",
+    },
+  },
 ];
