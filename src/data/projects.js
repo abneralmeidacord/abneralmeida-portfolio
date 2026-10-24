@@ -3,6 +3,7 @@ import vcleanImage from "../assets/images/vclean.png";
 import overwatchImage from "../assets/images/overwatch.png";
 import snakeImage from "../assets/images/snake.png";
 import asoneImage from "../assets/images/casa-profetica-as-one.png";
+import pokedexImage from "../assets/images/pokedex.png";
 
 export const projects = [
   {
@@ -86,8 +87,9 @@ export const projects = [
     type: 2,
     date: "2026-10",
     period: "10 / 2026",
-    image:
-      "https://raw.githubusercontent.com/abneralmeidacord/Pokedex-DIAW/main/public/assets/imgs/pokedex-closed.png",
+    image: pokedexImage,
+    imageWidth: 1896,
+    imageHeight: 1198,
     repository: "https://github.com/abneralmeidacord/Pokedex-DIAW",
     website: "https://pokedex-diaw.vercel.app/",
     technologies: ["React", "TypeScript", "Vite", "CSS", "Motion"],
